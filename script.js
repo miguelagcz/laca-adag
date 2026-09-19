@@ -412,3 +412,60 @@ if(heroBg && heroBgNext){
   startHeroCarousel();
 
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const spaImages = [
+    "LaVidRitualSpa/foto.webp",
+    "LaVidRitualSpa/foto2.webp",
+    "LaVidRitualSpa/foto3.webp",
+    "LaVidRitualSpa/foto4.webp",
+    "LaVidRitualSpa/foto5.webp"
+  ];
+
+  const spaCurrent = document.querySelector("#spa .spa-slide-current");
+  const spaNext = document.querySelector("#spa .spa-slide-next");
+  const spaDots = document.querySelectorAll("#spaDots span");
+
+  let spaIndex = 0;
+
+  if (!spaCurrent || !spaNext) return;
+
+  spaCurrent.style.backgroundImage =
+    `url("${spaImages[0]}")`;
+
+  function showSpa(index) {
+
+    spaIndex = (index + spaImages.length) % spaImages.length;
+
+    spaNext.style.backgroundImage =
+      `url("${spaImages[spaIndex]}")`;
+
+    spaDots.forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === spaIndex);
+    });
+
+    spaNext.style.opacity = "1";
+    spaNext.style.transform = "scale(1.04)";
+
+
+    setTimeout(() => {
+
+      spaCurrent.style.backgroundImage =
+        `url("${spaImages[spaIndex]}")`;
+
+      spaCurrent.style.opacity = "1";
+      spaCurrent.style.transform = "scale(1)";
+
+      spaNext.style.opacity = "0";
+      spaNext.style.transform = "scale(1)";
+
+    }, 1200);
+  }
+
+  setInterval(() => {
+    showSpa(spaIndex + 1);
+  }, 5000);
+
+});
