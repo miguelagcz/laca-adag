@@ -114,6 +114,17 @@ a{ color: inherit; text-decoration: none; }
 .section-dark{ background: var(--ink); color: #EDE9DE; }
 .section-dark p{ color: #C9CEC4; }
 
+
+/* =========================================================
+   RANCHO LA CAÑADA — EL DESARROLLO
+   ========================================================= */
+
+#desarrollo.section-light {
+  background: #064e3b !important;
+  background-color: #064e3b !important;
+
+  color: #fff;
+}
 .eyebrow{
   font-family: var(--font-body);
   font-size: .78rem;
@@ -127,6 +138,401 @@ a{ color: inherit; text-decoration: none; }
 
 .section-lead{ font-size: 1.08rem; max-width: 56ch; }
 
+
+/* =========================================================
+   DESARROLLO — VERDE FUERTE
+   ========================================================= */
+
+#desarrollo {
+  position: relative;
+  overflow: hidden;
+
+  /* VERDE REAL, NO DESLAVADO */
+  background: #064e3b !important;
+  background-color: #064e3b !important;
+
+  color: #fff !important;
+
+  border-top: 1px solid rgba(255,255,255,.10);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 20px 50px rgba(0,0,0,.20);
+}
+
+
+/* Todo el texto de la sección */
+#desarrollo h2,
+#desarrollo p,
+#desarrollo strong,
+#desarrollo .stat-num,
+#desarrollo .stat-num-text,
+#desarrollo .stat-label {
+  color: #fff !important;
+}
+
+
+/* =========================================================
+   BOTÓN
+   ========================================================= */
+
+#desarrollo .text-link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  height: 54px;
+
+  padding: 0 1.55rem;
+
+  color: #fff !important;
+
+  text-decoration: none;
+  
+
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+
+  /* VIDRIO */
+  background: rgba(255,255,255,.045);
+
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 12px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 8px 25px rgba(0,0,0,.18);
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    border-radius .35s ease,
+    padding-right .35s ease,
+    transform .35s ease;
+}
+
+
+/* =========================================================
+   FLECHA SEPARADA
+   ========================================================= */
+
+#desarrollo .text-link::after {
+  content: "";
+  position: absolute;
+  left: calc(100% + 14px);
+  top: -1px;
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("../desarrollo/arrow-up.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 16px 16px !important;
+
+  background-color: rgba(255,255,255,.045);
+
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 12px;
+
+  opacity: 1;
+  z-index: 20;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 8px 25px rgba(0,0,0,.18);
+
+  transition:
+    left .35s ease,
+    width .35s ease,
+    border-radius .35s ease,
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+#desarrollo .text-link:hover {
+  background: #064e3b;
+  border-color: rgba(255,255,255,.50);
+  border-right-color: transparent;
+  border-radius: 12px 0 0 12px;
+  padding-right: 1.7rem;
+  transform: translateY(-2px);
+}
+
+#desarrollo .text-link:hover::after {
+  left: calc(100% - 1px);
+  width: 56px;
+
+  background: #064e3b;
+
+  border: 1px solid rgba(255,255,255,.50);
+  border-left: 0;
+
+  border-radius: 0 12px 12px 0;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  box-shadow: none;
+
+  color: #fff;
+  font-size: 1.95rem;
+  font-weight: 800;
+
+  /* MUY IMPORTANTE */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  box-shadow: none;
+
+  transition:
+    left .35s ease,
+    width .35s ease,
+    border-radius .35s ease,
+    background .35s ease,
+    border-color .35s ease,
+    font-size .35s ease;
+}
+
+/* =========================================================
+   AQUÍ ES DONDE REALMENTE SE UNE
+   ========================================================= */
+#desarrollo .text-link::after {
+  content: "";
+  background-image: url("arrow.svg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: 24px 24px;
+  position: absolute;
+  left: calc(100% + 14px);
+  top: -1px;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1;
+
+  background: rgba(255,255,255,.045);
+
+  /* MISMO BORDE QUE EL BOTÓN */
+  border: 1px solid rgba(255,255,255,.32);
+
+  /* CUADRADO */
+  border-radius: 7px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 8px 25px rgba(0,0,0,.18);
+
+  transition:
+    left .35s ease,
+    width .35s ease,
+    border-radius .35s ease,
+    background .35s ease,
+    border-color .35s ease,
+    font-size .35s ease,
+    box-shadow .35s ease;
+}
+/* =========================================
+   ESTADÍSTICAS — EL DESARROLLO
+   ========================================= */
+
+#desarrollo .stat-row {
+  width: min(var(--max-w), calc(100% - 2 * var(--gap)));
+  margin: 5.5rem auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+
+  padding: 1px;
+
+  background: rgba(255,255,255,.12);
+
+  border-top: 1px solid rgba(255,255,255,.16);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+
+  overflow: hidden;
+}
+
+/* Cada estadística */
+#desarrollo .stat {
+  min-width: 0;
+  min-height: 145px;
+
+  padding: 2rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: rgba(255,255,255,.035);
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+/* Efecto sutil al pasar el mouse */
+#desarrollo .stat:hover {
+  background: rgba(255,255,255,.065);
+}
+
+/* Números */
+#desarrollo .stat-num,
+#desarrollo .stat-num-text {
+  display: block;
+
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 600;
+
+  line-height: 1;
+  letter-spacing: -.045em;
+
+  white-space: nowrap;
+
+  color: #fff;
+}
+
+/* Etiquetas */
+#desarrollo .stat-label {
+  display: block;
+
+  width: 100%;
+  max-width: 220px;
+
+  margin-top: .85rem;
+
+  color: rgba(255,255,255,.68) !important;
+
+  font-size: .67rem;
+  font-weight: 600;
+
+  line-height: 1.5;
+  letter-spacing: .09em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  #desarrollo .stat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================
+   MÓVIL
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  #desarrollo .stat-row {
+    width: calc(100% - 2rem);
+
+    margin-top: 4rem;
+
+    grid-template-columns: 1fr;
+  }
+
+  #desarrollo .stat {
+    min-height: 125px;
+    padding: 1.5rem 1rem;
+  }
+
+  #desarrollo .stat-num,
+  #desarrollo .stat-num-text {
+    font-size: 2rem;
+  }
+
+  #desarrollo .stat-label {
+    max-width: 210px;
+    font-size: .59rem;
+  }
+
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  #desarrollo .stat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================
+   MÓVIL
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  #desarrollo .stat-row {
+    width: calc(100% - 2rem);
+
+    margin-top: 4rem;
+
+    grid-template-columns: 1fr;
+  }
+
+  #desarrollo .stat {
+    min-height: 125px;
+    padding: 1.5rem 1rem;
+  }
+
+  #desarrollo .stat-num,
+  #desarrollo .stat-num-text {
+    font-size: 2rem;
+  }
+
+  #desarrollo .stat-label {
+    max-width: 210px;
+    font-size: .59rem;
+  }
+
+}
 /* Buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
@@ -327,6 +733,10 @@ body.page-loaded .header-rule.line-finished {
 /* Reflejo de vidrio */
 .main-nav a:not(.btn)::before{
   content:"";
+  background-image: url("arrow.svg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: 24px 24px;
   position:absolute;
   z-index:-1;
   inset:-3px -7px;
@@ -476,7 +886,6 @@ background:
 }
 
 /* Durante el cambio */
-
 .hero-bg.is-transitioning.hero-bg-next{
   opacity:1;
   transform:scale(1);
@@ -1571,3 +1980,73 @@ input:focus, textarea:focus{
   }
 }
 
+/* ==========================================
+   RANCHO LA CAÑADA
+   EL DESARROLLO - VERDE VIDRIO
+   ========================================== */
+
+#desarrollo {
+  background: rgba(6, 78, 59, 0.55) !important;
+
+  color: #ffffff;
+
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* TODO EL TEXTO BLANCO */
+
+#desarrollo h2,
+#desarrollo p,
+#desarrollo strong,
+#desarrollo .eyebrow,
+#desarrollo .text-link,
+#desarrollo .stat-num,
+#desarrollo .stat-num-text,
+#desarrollo .stat-label {
+  color: #ffffff;
+}
+
+
+/* Texto de párrafos */
+
+#desarrollo p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* Etiqueta "EL DESARROLLO" */
+
+#desarrollo .eyebrow {
+  color: rgba(255, 255, 255, 0.80);
+}
+
+
+/* Números */
+
+#desarrollo .stat-num,
+#desarrollo .stat-num-text {
+  color: #ffffff;
+}
+
+
+/* Texto debajo de números */
+
+#desarrollo .stat-label {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* Link */
+
+#desarrollo .text-link {
+  color: #ffffff;
+}
