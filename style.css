@@ -1400,101 +1400,333 @@ background:
 /* ==========================================================
    MASTERPLAN
    ========================================================== */
-.masterplan-wrap{
-  max-width: var(--max-w);
-  margin: 2.5rem auto;
-  padding: 0 var(--gap);
+
+#masterplan {
+  background: #f3f5f2;
+  color: #064e3b;
+  overflow: hidden;
 }
-.spec-title{ margin-top: 3rem; }
-.spec-sheet{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(1.5rem,4vw,3rem);
-  align-items:start;
-  margin-bottom: 2rem;
+
+#masterplan > .section-inner:first-child {
+  width: min(var(--max-w), calc(100% - 2 * var(--gap)));
+  margin: 0 auto;
+  min-height: 520px;
+
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
 }
-.spec-list{
-  margin:0; padding:0;
-  display:grid; gap: .9rem;
+
+
+/* ==========================================================
+   TEXTO
+   ========================================================== */
+
+#masterplan .eyebrow {
+  color: rgba(6,78,59,.58);
 }
-.spec-list > div{
-  display:flex; justify-content:space-between; gap:1rem;
-  padding-bottom: .7rem;
-  border-bottom: 1px solid rgba(28,42,34,.12);
+
+#masterplan h2 {
+  margin-bottom: 1.25rem;
+  color: #064e3b;
 }
-.spec-list dt{ color: var(--ink-soft); font-size: .92rem; }
-.spec-list dd{ margin:0; font-weight:600; text-align:right; }
-.spec-media-row{ display:grid; grid-template-columns:1fr 1fr; gap: .8rem; margin-top:.8rem; }
+
+#masterplan .section-lead {
+  max-width: 440px;
+  margin-bottom: 1.15rem;
+  color: rgba(28,42,34,.68);
+  line-height: 1.65;
+}
+
+#masterplan > .section-inner:first-child .btn {
+  margin-top: .75rem;
+}
+
+
+/* ==========================================================
+   MASTERPLAN — IMAGEN MÁS GRANDE SIN BAJARLA
+   ========================================================== */
+
+#masterplan .masterplan-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#masterplan .masterplan-img {
+  display: block;
+
+  width: 115%;
+  max-width: none;
+  height: auto;
+
+  object-fit: contain;
+  object-position: center;
+
+  background: transparent;
+
+  /* CRECE SIN CAMBIAR SU ANCLAJE VISUAL */
+  transform: translate(-1%, -3%);
+  transform-origin: center center;
+}
+
+
+/* ==========================================================
+   INDICADORES 01 — 06 
+   ========================================================== */
+
+#masterplan .masterplan-dots {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  max-width: 760px;
+
+  margin: auto;
+
+  pointer-events: none;
+}
+
+#masterplan .masterplan-dots span {
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(6,78,59,.88);
+  color: #fff;
+
+  border: 1px solid rgba(255,255,255,.30);
+
+  box-shadow:
+    0 8px 22px rgba(6,78,59,.20),
+    inset 0 1px 0 rgba(255,255,255,.18);
+
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition:
+    transform .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+#masterplan .masterplan-dots span.is-active {
+  background: #064e3b;
+  transform: scale(1.08);
+}
+
+
+/* ==========================================================
+   POSICIÓN DE LOS 6 PUNTOS DEL MASTERPLAN
+   ========================================================== */
+
+#masterplan .masterplan-dots span:nth-child(1) {
+  top: 36%;
+  right: 5%;
+}
+
+#masterplan .masterplan-dots span:nth-child(2) {
+  top: 45%;
+  right: 27%;
+}
+
+#masterplan .masterplan-dots span:nth-child(3) {
+  top: 34%;
+  left: 25%;
+}
+
+#masterplan .masterplan-dots span:nth-child(4) {
+  top: 15%;
+  right: 29%;
+}
+
+#masterplan .masterplan-dots span:nth-child(5) {
+  top: 53%;
+  left: 39%;
+}
+
+#masterplan .masterplan-dots span:nth-child(6) {
+  bottom: 11%;
+  left: 35%;
+}
+
+/* ==========================================================
+   SEGUNDA PARTE
+   ========================================================== */
+
+#masterplan > .section-inner:last-child {
+  width: min(var(--max-w), calc(100% - 2 * var(--gap)));
+  margin: 0 auto;
+}
+
+
+/* ==========================================================
+   BOTÓN
+   ========================================================== */
+
+#masterplan .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: .85rem 1.35rem;
+
+  background: #064e3b;
+  color: #fff;
+
+  border: 1px solid #064e3b;
+  border-radius: 10px;
+
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+
+  transition:
+    transform .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+#masterplan .btn-primary:hover {
+  background: #053f30;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(6,78,59,.18);
+}
+
+
+/* ==========================================================
+   OCULTAR LA FICHA ANTIGUA
+   ========================================================== */
+
+#masterplan .spec-title,
+#masterplan .spec-sheet {
+  display: none;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+  #masterplan > .section-inner:first-child {
+    min-height: auto;
+
+    grid-template-columns: 1fr;
+
+    gap: 2.5rem;
+  }
+
+  #masterplan .masterplan-wrap {
+    margin-top: 1rem;
+  }
+
+  #masterplan .masterplan-img {
+    max-width: 700px;
+  }
+
+  #masterplan > .section-inner:first-child {
+    text-align: center;
+  }
+
+  #masterplan .section-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #masterplan > .section-inner:first-child .btn {
+    margin-top: .5rem;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  #masterplan > .section-inner:first-child {
+    width: calc(100% - 2rem);
+  }
+
+  #masterplan .masterplan-img {
+    aspect-ratio: 1 / 1;
+  }
+
+  #masterplan .masterplan-dots span {
+    width: 29px;
+    height: 29px;
+
+    font-size: .5rem;
+  }
+
+  #masterplan .masterplan-dots span:nth-child(1) {
+    top: 35%;
+    right: 1%;
+  }
+
+  #masterplan .masterplan-dots span:nth-child(2) {
+    top: 44%;
+    right: 22%;
+  }
+
+  #masterplan .masterplan-dots span:nth-child(3) {
+    top: 31%;
+    left: 21%;
+  }
+
+  #masterplan .masterplan-dots span:nth-child(4) {
+    top: 13%;
+    right: 24%;
+  }
+
+  #masterplan .masterplan-dots span:nth-child(5) {
+    top: 50%;
+    left: 35%;
+  }
+
+  #masterplan .masterplan-dots span:nth-child(6) {
+    bottom: 10%;
+    left: 31%;
+  }
+}
+
 /* =========================================================
    LOTES
 ========================================================= */
 
 .lots-section {
-  position: relative;
+  width: 100%;
+  padding: 70px 0 100px;
 
-  padding: 8rem var(--gap);
-
-  background: #f3f1eb;
-  color: #1c2a22;
+  background: #e8eeea;
 
   overflow: hidden;
 }
 
 
-.lots-container {
-  width: 100%;
-  max-width: var(--max-w);
-
-  margin: 0 auto;
-}
-
-
 /* =========================================================
-   ENCABEZADO
+   CONTENEDOR
 ========================================================= */
 
-.section-heading {
-  max-width: 720px;
-
-  margin: 0 auto 4rem;
-
-  text-align: center;
-}
-
-
-.section-kicker {
-  margin: 0 0 .75rem;
-
-  font-size: .7rem;
-  font-weight: 600;
-
-  letter-spacing: .22em;
-  text-transform: uppercase;
-
-  opacity: .55;
-}
-
-
-.section-title {
-  margin: 0;
-
-  font-size: clamp(2.5rem, 5vw, 5rem);
-
-  line-height: .95;
-
-  font-weight: 500;
-}
-
-
-.section-description {
-  max-width: 620px;
-
-  margin: 1.5rem auto 0;
-
-  font-size: 1rem;
-  line-height: 1.7;
-
-  opacity: .7;
+.lots-container {
+  width: min(1100px, calc(100% - 50px));
+  margin: 0 auto;
 }
 
 
@@ -1503,89 +1735,138 @@ background:
 ========================================================= */
 
 .lots-selector {
-  display: flex;
+  display: grid;
 
-  justify-content: center;
-  align-items: stretch;
+  grid-template-columns:
+    repeat(5, 1fr);
 
-  gap: .5rem;
+  width: 100%;
 
-  margin-bottom: 4rem;
+  padding: 10px;
 
-  overflow-x: auto;
+  background: #214e42;
 
-  padding-bottom: .5rem;
+  border-radius: 5px;
+
+  gap: 8px;
+
+  margin-bottom: 12px;
 }
 
 
+/* =========================================================
+   BOTONES
+========================================================= */
+
 .lot-tab {
-  flex: 0 0 auto;
+  position: relative;
 
-  min-width: 150px;
+  display: flex;
 
-  padding: 1rem 1.25rem;
+  align-items: center;
+  justify-content: center;
 
-  border: 1px solid rgba(28,42,34,.18);
+  gap: 5px;
 
-  background: transparent;
+  min-height: 40px;
 
-  color: inherit;
+  padding: 8px 12px;
+
+  border: 1px solid transparent;
+
+  border-radius: 5px;
+
+  background: #e9efeb;
+
+  color: #214e42;
 
   cursor: pointer;
 
   font-family: inherit;
 
-  font-size: .85rem;
-
-  line-height: 1.35;
-
-  text-align: center;
-
   transition:
-    background .3s ease,
-    color .3s ease,
-    border-color .3s ease,
-    transform .3s ease;
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease;
 }
 
 
 .lot-tab span {
-  font-size: .7rem;
+  font-size: 10px;
 
-  opacity: .6;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
 }
 
 
-.lot-tab:hover {
-  transform: translateY(-2px);
+.lot-tab small {
+  font-size: 9px;
 
-  border-color: rgba(28,42,34,.45);
+  font-weight: 500;
+
+  white-space: nowrap;
 }
 
 
-.lot-tab.is-active {
-  background: #1c2a22;
+.lot-tab b {
+  margin-left: 2px;
 
-  color: #fff;
+  font-size: 14px;
 
-  border-color: #1c2a22;
+  font-weight: 400;
 }
 
 
 /* =========================================================
-   CONTENIDO
+   BOTÓN ACTIVO
 ========================================================= */
 
-.lot-content {
+.lot-tab.is-active {
+  background: transparent;
+
+  border-color: #e9efeb;
+
+  color: #ffffff;
+}
+
+
+.lot-tab.is-active b {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   TARJETA PRINCIPAL
+========================================================= */
+
+.lot-card {
+
   display: grid;
 
+  /*
+     IZQUIERDA       PLANO          FOTOS
+  */
   grid-template-columns:
-    minmax(0, .85fr)
-    minmax(0, 1.15fr);
-
-  gap: 5rem;
+    1fr
+    1.05fr
+    .55fr;
 
   align-items: center;
+
+  gap: 35px;
+
+  width: 100%;
+
+  min-height: 470px;
+
+  padding: 25px 0 20px;
+
+  border-top: 1px solid rgba(33, 78, 66, .55);
+
+  border-bottom: 1px solid rgba(33, 78, 66, .55);
 }
 
 
@@ -1594,40 +1875,40 @@ background:
 ========================================================= */
 
 .lot-info {
-  max-width: 560px;
+  align-self: center;
+
+  min-width: 0;
 }
 
 
-.lot-number {
-  margin: 0 0 .5rem;
-
-  font-size: .7rem;
-
-  letter-spacing: .2em;
-
-  font-weight: 600;
-
-  opacity: .55;
+.lot-heading {
+  margin-bottom: 20px;
 }
 
 
-.lot-info h3 {
+.lot-heading h2 {
   margin: 0;
 
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: 29px;
 
   line-height: 1;
+
+  font-weight: 700;
+
+  color: #214e42;
 }
 
 
-.lot-description {
-  margin: 1.5rem 0 2.5rem;
+.lot-heading h3 {
+  margin: 2px 0 0;
 
-  max-width: 500px;
+  font-size: 25px;
 
-  line-height: 1.7;
+  line-height: 1;
 
-  opacity: .7;
+  font-weight: 700;
+
+  color: #214e42;
 }
 
 
@@ -1636,139 +1917,457 @@ background:
 ========================================================= */
 
 .lot-features {
-  display: grid;
 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 1.5rem;
-
-  margin-bottom: 2.5rem;
-}
-
-
-.lot-feature {
   display: flex;
 
   flex-direction: column;
 
-  gap: .25rem;
+  gap: 10px;
 
-  padding-bottom: 1rem;
-
-  border-bottom: 1px solid rgba(28,42,34,.15);
-}
-
-
-.lot-feature strong {
-  font-size: 1.15rem;
-
-  font-weight: 500;
-}
-
-
-.lot-feature span {
-  font-size: .72rem;
-
-  text-transform: uppercase;
-
-  letter-spacing: .08em;
-
-  opacity: .55;
 }
 
 
 /* =========================================================
-   BOTÓN
+   CADA CARACTERÍSTICA
 ========================================================= */
 
-.lot-button {
+.lot-feature {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 29px;
+}
+
+
+.feature-icon {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 23px;
+  height: 23px;
+
+  flex-shrink: 0;
+
+  color: #214e42;
+
+  font-size: 16px;
+}
+
+
+.lot-feature strong {
+
+  display: block;
+
+  font-size: 11px;
+
+  line-height: 1.2;
+
+  font-weight: 600;
+
+  color: #214e42;
+}
+
+
+.lot-feature span {
+
+  display: block;
+
+  margin-top: 1px;
+
+  font-size: 10px;
+
+  line-height: 1;
+
+  color: #214e42;
+}
+
+
+/* =========================================================
+   BOTÓN COTIZAR
+========================================================= */
+
+.lot-quote-button {
+
   display: inline-flex;
 
   align-items: center;
   justify-content: center;
 
-  min-height: 48px;
+  gap: 7px;
 
-  padding: 0 1.5rem;
+  margin-top: 22px;
+
+  min-width: 85px;
+
+  height: 37px;
+
+  padding: 0 18px;
+
+  border-radius: 5px;
+
+  background: #214e42;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  transition:
+    background .25s ease,
+    transform .25s ease;
+}
+
+
+.lot-quote-button:hover {
+
+  background: #173c32;
+
+  transform: translateY(-2px);
+}
+
+
+.lot-quote-button span {
+
+  font-size: 14px;
 }
 
 
 /* =========================================================
-   IMAGEN
+   PLANO CENTRAL
 ========================================================= */
 
-.lot-image-wrapper {
+.lot-plan {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
+
+  min-width: 0;
+}
+
+
+.lot-plan-frame {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  height: 390px;
 
   overflow: hidden;
 
-  background: #ddd;
+  background: #ffffff;
+
+  border-radius: 3px;
 }
 
 
-.lot-image {
+.lot-plan-frame img {
+
+  display: block;
+
   width: 100%;
+  height: 100%;
 
-  aspect-ratio: 4 / 3;
+  object-fit: contain;
 
-  background-size: cover;
-  background-position: center;
-
-  transition: transform .6s cubic-bezier(.22,1,.36,1);
-}
-
-
-.lot-image-wrapper:hover .lot-image {
-  transform: scale(1.025);
+  transition:
+    opacity .25s ease;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   GALERÍA DERECHA
 ========================================================= */
 
-@media (max-width: 900px) {
+.lot-gallery {
 
-  .lot-content {
-    grid-template-columns: 1fr;
+  display: flex;
 
-    gap: 3rem;
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 20px;
+
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   ITEM DE GALERÍA
+========================================================= */
+
+.lot-gallery-item {
+
+  width: 100%;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   FOTO
+========================================================= */
+
+.lot-gallery-photo {
+
+  width: 100%;
+
+  aspect-ratio: 4 / 2.6;
+
+  overflow: hidden;
+
+  border-radius: 7px;
+
+  background: #d4dcd7;
+}
+
+
+.lot-gallery-photo img {
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    opacity .25s ease,
+    transform .4s ease;
+}
+
+
+.lot-gallery-photo:hover img {
+
+  transform: scale(1.03);
+}
+
+
+/* =========================================================
+   TEXTO DE GALERÍA
+========================================================= */
+
+.lot-gallery-item span {
+
+  display: block;
+
+  margin-top: 6px;
+
+  padding-bottom: 5px;
+
+  border-bottom: 1px solid #214e42;
+
+  font-size: 8px;
+
+  color: #214e42;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .lots-container {
+    width: min(900px, calc(100% - 35px));
   }
+
+
+  .lot-card {
+
+    grid-template-columns:
+      1fr
+      1.2fr;
+
+    gap: 30px;
+
+    padding: 30px 0;
+  }
+
 
   .lot-info {
-    max-width: none;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+
+  .lot-plan {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+
+  .lot-gallery {
+
+    grid-column: 2;
+    grid-row: 2;
+
+    flex-direction: row;
+
+    align-items: flex-start;
+  }
+
+
+  .lot-gallery-item {
+    flex: 1;
+  }
+
+
+  .lot-plan-frame {
+    height: 360px;
   }
 
 }
 
 
-@media (max-width: 600px) {
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 650px) {
 
   .lots-section {
-    padding: 6rem 1.25rem;
+    padding: 45px 0 70px;
   }
 
-  .section-heading {
-    margin-bottom: 3rem;
+
+  .lots-container {
+    width: calc(100% - 25px);
   }
+
+
+  /* BOTONES */
 
   .lots-selector {
-    justify-content: flex-start;
 
-    margin-bottom: 3rem;
+    display: flex;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    padding: 7px;
+
+    gap: 5px;
   }
+
+
+  .lots-selector::-webkit-scrollbar {
+    display: none;
+  }
+
 
   .lot-tab {
-    min-width: 135px;
 
-    padding: .85rem 1rem;
+    flex: 0 0 145px;
+
+    min-height: 42px;
+
+    padding: 7px 9px;
   }
 
-  .lot-features {
-    gap: 1rem;
+
+  .lot-tab span {
+    font-size: 9px;
+  }
+
+
+  .lot-tab small {
+    font-size: 8px;
+  }
+
+
+  /* TARJETA */
+
+  .lot-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 30px;
+
+    padding: 30px 0;
+  }
+
+
+  /* INFORMACIÓN */
+
+  .lot-info {
+    width: 100%;
+  }
+
+
+  .lot-heading h2 {
+    font-size: 27px;
+  }
+
+
+  .lot-heading h3 {
+    font-size: 23px;
+  }
+
+
+  /* PLANO */
+
+  .lot-plan {
+    width: 100%;
+  }
+
+
+  .lot-plan-frame {
+
+    height: auto;
+
+    aspect-ratio: 4 / 3;
+  }
+
+
+  /* FOTOS */
+
+  .lot-gallery {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    width: 100%;
+  }
+
+
+  .lot-gallery-photo {
+    aspect-ratio: 4 / 3;
   }
 
 }
+
 /* ==========================================================
    AMENIDADES
    ========================================================== */
@@ -2415,4 +3014,143 @@ input:focus, textarea:focus{
     aspect-ratio: 4 / 5;
   }
 
+}
+/* ==========================================================
+   MASTERPLAN — BOTÓN VERDE VIDRIO
+   ========================================================== */
+
+#masterplan .btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 54px;
+  padding: 0 1.5rem;
+
+  color: #fff;
+
+  /* VERDE VIDRIO */
+  background: rgba(6, 78, 59, .55);
+
+  border: 1px solid rgba(6, 78, 59, .45);
+  border-radius: 12px;
+
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 8px 25px rgba(6,78,59,.14);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    border-radius .35s ease,
+    padding-right .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+
+/* ==========================================================
+   FLECHA
+   ========================================================== */
+
+#masterplan .btn-primary::after {
+  content: "";
+
+  position: absolute;
+  left: calc(100% + 14px);
+  top: -1px;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("../desarrollo/arrow-up.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 16px 16px !important;
+
+  /* VERDE VIDRIO */
+  background-color: rgba(6, 78, 59, .55);
+
+  border: 1px solid rgba(6, 78, 59, .45);
+  border-radius: 12px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 8px 25px rgba(6,78,59,.14);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    left .35s ease,
+    width .35s ease,
+    border-radius .35s ease,
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+
+/* ==========================================================
+   HOVER — VERDE MÁS FUERTE
+   ========================================================== */
+
+#masterplan .btn-primary:hover {
+  background: #064e3b;
+
+  border-color: rgba(6,78,59,.80);
+  border-right-color: transparent;
+
+  border-radius: 12px 0 0 12px;
+
+  padding-right: 1.7rem;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 8px 25px rgba(6,78,59,.22);
+}
+
+
+#masterplan .btn-primary:hover::after {
+  left: calc(100% - 1px);
+
+  width: 56px;
+
+  background: #064e3b;
+
+  border: 1px solid rgba(6,78,59,.80);
+  border-left: 0;
+
+  border-radius: 0 12px 12px 0;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  box-shadow: none;
+}
+
+/* =========================================================
+   TRANSICIÓN DE IMÁGENES DE LOTES
+========================================================= */
+
+#lot-plan-image,
+#lot-front-image,
+#lot-interior-image {
+  opacity: 1;
+  transition: opacity .25s ease;
 }

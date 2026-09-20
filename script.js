@@ -469,3 +469,370 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 5000);
 
 });
+
+/* =========================================================
+   LOTES - CAMBIO DE INFORMACIÓN E IMÁGENES
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =======================================================
+     DATOS DE LOS LOTES
+  ======================================================= */
+
+  const lotsData = {
+
+    "lot-20": {
+
+      name: "Lote 20",
+      block: "Manzana 16",
+
+      land: "527.40 m²",
+      construction: "384.13 m²",
+
+      bedrooms: "3 Recámaras",
+      halfBath: "1 Medio Baño",
+      bathrooms: "3 Baños Completos",
+      terraces: "3 Terrazas Privadas",
+      poolTerrace: "Terraza con Alberca",
+      pool: "Alberca",
+
+      plan:
+        "./lotes/lote20mazana16/plano.webp",
+
+      front:
+        "./lotes/lote20mazana16/casa_lote20_terraza.webp",
+
+      interior:
+        "./lotes/lote20mazana16/casa_lote20_sala.webp"
+
+    },
+
+
+    "lot-3": {
+
+      name: "Lote 3",
+      block: "Manzana 05",
+
+      land: "503.65 m²",
+      construction: "298.06 m²",
+
+      bedrooms: "3 Recámaras",
+      halfBath: "2 Medio Baño",
+      bathrooms: "3 Baños Completos",
+      terraces: "Sala de Juegos",
+      poolTerrace: "Terraza con Vista",
+      pool: "Alberca",
+
+      plan:
+        "./lotes/lote3manzana05/plano_lote3.webp",
+
+      front:
+        "./lotes/lote3manzana05/casa_lote3_frontal_lateral.webp",
+
+      interior:
+        "./lotes/lote3manzana05/casa_lote3_recamara.webp"
+
+    },
+
+
+    "lot-13": {
+
+      name: "Lote 13",
+      block: "Manzana 07",
+
+      land: "600.00 m²",
+      construction: "335.80 m²",
+
+      bedrooms: "3 Recámaras",
+      halfBath: "1 Medio Baño",
+      bathrooms: "3 Baños Completos",
+      terraces: "2 Terrazas Privadas",
+      poolTerrace: "Sala de Juegos",
+      pool: "Alberca",
+
+      plan:
+        "./lotes/lote13manzana07/plano1.webp",
+
+      front:
+        "./lotes/lote13manzana07/casa_lote13_ingreso.webp",
+      
+
+      interior:
+        "./lotes/lote13manzana07/casa_lote13_estancia.webp"
+
+    },
+
+
+    "lot-5a": {
+
+      name: "Lote 5A",
+      block: "Manzana 05",
+
+      land: "524.17 m²",
+      construction: "268.94 m²",
+
+      bedrooms: "3 Recámaras",
+      halfBath: "1 Medio Baño",
+      bathrooms: "3 Baños Completos",
+      terraces: "Balcon Perimetral",
+      poolTerrace: "Terraza con Vista",
+      pool: "Carril de Nado",
+
+      plan:
+        "./lotes/lote5amanzana05/plano2.webp",
+
+      front:
+        "./lotes/lote5amanzana05/casa_lote5a_posterior.webp",
+
+      interior:
+        "./lotes/lote5amanzana05/casa_lote5a_sala.webp"
+
+    },
+
+
+    "lot-4": {
+
+      name: "Lote 4",
+      block: "Manzana 07",
+
+      land: "600.00 m²",
+      construction: "294.20 m²",
+
+      bedrooms: "3 Recámaras",
+      halfBath: "1 Medio Baño",
+      bathrooms: "4 Baños Completos",
+      terraces: "Sala de juegos",
+      poolTerrace: "Terraza con Vista",
+      pool: "Roof Top",
+
+      plan:
+        "./lotes/lote4manzana07/plano3.webp",
+
+      front:
+        "./lotes/lote4manzana07/casa_lote4_frontal.webp",
+
+      interior:
+        "./lotes/lote4manzana07/casa_lote4_sala.webp"
+
+    }
+
+  };
+
+
+  /* =======================================================
+     ELEMENTOS HTML
+  ======================================================= */
+
+  const buttons =
+    document.querySelectorAll(".lot-tab");
+
+  const lotName =
+    document.getElementById("lot-name");
+
+  const lotBlock =
+    document.getElementById("lot-block");
+
+  const lotLand =
+    document.getElementById("lot-land");
+
+  const lotConstruction =
+    document.getElementById("lot-construction");
+
+  const lotBedrooms =
+    document.getElementById("lot-bedrooms");
+
+  const lotHalfBath =
+    document.getElementById("lot-half-bath");
+
+  const lotBathrooms =
+    document.getElementById("lot-bathrooms");
+
+  const lotTerraces =
+    document.getElementById("lot-terraces");
+
+  const lotPoolTerrace =
+    document.getElementById("lot-pool-terrace");
+
+  const lotPool =
+    document.getElementById("lot-pool");
+
+  const lotPlanImage =
+    document.getElementById("lot-plan-image");
+
+  const lotFrontImage =
+    document.getElementById("lot-front-image");
+
+  const lotInteriorImage =
+    document.getElementById("lot-interior-image");
+
+
+  /* =======================================================
+     CAMBIAR LOTE
+  ======================================================= */
+
+  function changeLot(lotId) {
+
+    const lot = lotsData[lotId];
+
+    if (!lot) {
+      console.warn("No existe información para:", lotId);
+      return;
+    }
+
+
+    /* =====================================================
+       ACTIVAR BOTÓN
+    ===================================================== */
+
+    buttons.forEach(button => {
+
+      const isActive =
+        button.dataset.lot === lotId;
+
+      button.classList.toggle(
+        "is-active",
+        isActive
+      );
+
+      button.setAttribute(
+        "aria-selected",
+        isActive ? "true" : "false"
+      );
+
+      /* Cambiar + por − */
+
+      const symbol =
+        button.querySelector("b");
+
+      if (symbol) {
+        symbol.textContent =
+          isActive ? "−" : "+";
+      }
+
+    });
+
+
+    /* =====================================================
+       CAMBIAR INFORMACIÓN
+    ===================================================== */
+
+    lotName.textContent =
+      lot.name;
+
+    lotBlock.textContent =
+      lot.block;
+
+    lotLand.textContent =
+      lot.land;
+
+    lotConstruction.textContent =
+      lot.construction;
+
+    lotBedrooms.textContent =
+      lot.bedrooms;
+
+    lotHalfBath.textContent =
+      lot.halfBath;
+
+    lotBathrooms.textContent =
+      lot.bathrooms;
+
+    lotTerraces.textContent =
+      lot.terraces;
+
+    lotPoolTerrace.textContent =
+      lot.poolTerrace;
+
+    lotPool.textContent =
+      lot.pool;
+
+
+    /* =====================================================
+       CAMBIAR IMÁGENES
+    ===================================================== */
+
+    changeImage(
+      lotPlanImage,
+      lot.plan
+    );
+
+    changeImage(
+      lotFrontImage,
+      lot.front
+    );
+
+    changeImage(
+      lotInteriorImage,
+      lot.interior
+    );
+
+  }
+
+
+  /* =======================================================
+     TRANSICIÓN DE IMAGEN
+  ======================================================= */
+
+  function changeImage(imageElement, newSource) {
+
+    if (!imageElement) {
+      return;
+    }
+
+
+    imageElement.style.opacity = "0";
+
+
+    setTimeout(() => {
+
+      imageElement.src =
+        newSource;
+
+      imageElement.onload = () => {
+
+        imageElement.style.opacity = "1";
+
+      };
+
+    }, 180);
+
+  }
+
+
+  /* =======================================================
+     EVENTOS DE LOS BOTONES
+  ======================================================= */
+
+  buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const lotId =
+        button.dataset.lot;
+
+      changeLot(lotId);
+
+    });
+
+  });
+
+
+  /* =======================================================
+     LOTE INICIAL
+  ======================================================= */
+
+  const initialButton =
+    document.querySelector(
+      ".lot-tab.is-active"
+    );
+
+  if (initialButton) {
+
+    changeLot(
+      initialButton.dataset.lot
+    );
+
+  }
+
+});

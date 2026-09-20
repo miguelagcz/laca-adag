@@ -208,159 +208,383 @@
 
 </section>
 
-  <!-- MASTERPLAN -->
-  <section class="section section-light" id="masterplan">
-    <div class="section-inner">
+<section class="section section-light" id="masterplan">
+
+  <div class="section-inner masterplan-layout">
+
+    <div class="masterplan-copy">
+
       <p class="eyebrow">Distribución del desarrollo</p>
+
       <h2>Masterplan</h2>
-      <p class="section-lead">Lotes campestres de 500 a 850 m², trazados para aprovechar la vista al lago y la cercanía con las amenidades. Conoce la ubicación de cada manzana disponible hoy.</p>
+
+      <p class="section-lead">
+        Conoce la distribución estratégica de nuestros lotes residenciales
+        y descubre los terrenos en venta disponibles hoy en Rancho La Cañada.
+      </p>
+
+      <p class="section-lead">
+        Enamórate de los modelos de casas diseñados para integrarse
+        con la naturaleza.
+      </p>
+
+      <p class="section-lead">
+        Lotes campestres de 500 a 850 m² en el mejor lugar para invertir
+        de Tuxcueca.
+      </p>
+
+      <a href="#contacto" class="btn btn-primary">
+        CONTACTA A UN ASESOR
+      </a>
+
     </div>
+
 
     <div class="masterplan-wrap">
-      <div class="img-ph masterplan-img" data-label="Plano general del masterplan con manzanas numeradas" style="--ar:3/2"></div>
+
+     <img
+  class="masterplan-img"
+  src="masterplan/mapa.webp"
+  alt="Masterplan de Rancho La Cañada"
+>
+
+      <div class="masterplan-dots" id="masterplanDots">
+        <span class="is-active">01</span>
+        <span>02</span>
+        <span>03</span>
+        <span>04</span>
+        <span>05</span>
+        <span>06</span>
+      </div>
+
     </div>
 
-    <div class="section-inner">
-      <h3 class="spec-title">Ficha técnica · Lote 20, Manzana 16</h3>
-      <div class="spec-sheet">
-        <dl class="spec-list">
-          <div><dt>Terreno</dt><dd>527.40 m²</dd></div>
-          <div><dt>Construcción</dt><dd>384.13 m²</dd></div>
-          <div><dt>Recámaras</dt><dd>3</dd></div>
-          <div><dt>Baños completos</dt><dd>3</dd></div>
-          <div><dt>Medio baño</dt><dd>1</dd></div>
-          <div><dt>Terrazas privadas</dt><dd>3, una con alberca</dd></div>
-        </dl>
-        <div class="spec-media">
-          <div class="img-ph" data-label="Plano de la casa muestra" style="--ar:4/3"></div>
-          <div class="spec-media-row">
-            <div class="img-ph" data-label="Vista frontal" style="--ar:1/1"></div>
-            <div class="img-ph" data-label="Interior / sala" style="--ar:1/1"></div>
-          </div>
-        </div>
-      </div>
-      <a href="#contacto" class="btn btn-primary">Cotizar este lote</a>
-    </div>
-  </section>
-<!-- LOTES -->
+  </div>
+
+</section>
+
+<!-- =========================================================
+     LOTES
+========================================================= -->
+
 <section class="lots-section" id="lotes">
 
   <div class="lots-container">
 
-    <div class="section-heading">
-      <p class="section-kicker">RANCHO LA CAÑADA</p>
+    <!-- =====================================================
+         SELECTOR DE LOTES
+    ====================================================== -->
 
-      <h2 class="section-title">
-        Lotes
-      </h2>
+    <div class="lots-selector" role="tablist">
 
-      <p class="section-description">
-        Conoce nuestros lotes residenciales y descubre
-        las opciones disponibles dentro de Rancho La Cañada.
-      </p>
+      <button
+        class="lot-tab is-active"
+        type="button"
+        data-lot="lot-20"
+        role="tab"
+        aria-selected="true"
+      >
+        <span>Lote 20</span>
+        <small>Manzana 16</small>
+        <b>−</b>
+      </button>
+
+
+      <button
+        class="lot-tab"
+        type="button"
+        data-lot="lot-3"
+        role="tab"
+        aria-selected="false"
+      >
+        <span>Lote 3</span>
+        <small>Manzana 05</small>
+        <b>+</b>
+      </button>
+
+
+      <button
+        class="lot-tab"
+        type="button"
+        data-lot="lot-13"
+        role="tab"
+        aria-selected="false"
+      >
+        <span>Lote 13</span>
+        <small>Manzana 07</small>
+        <b>+</b>
+      </button>
+
+
+      <button
+        class="lot-tab"
+        type="button"
+        data-lot="lot-5a"
+        role="tab"
+        aria-selected="false"
+      >
+        <span>Lote 5A</span>
+        <small>Manzana 05</small>
+        <b>+</b>
+      </button>
+
+
+      <button
+        class="lot-tab"
+        type="button"
+        data-lot="lot-4"
+        role="tab"
+        aria-selected="false"
+      >
+        <span>Lote 4</span>
+        <small>Manzana 07</small>
+        <b>+</b>
+      </button>
+
     </div>
 
 
-    <!-- SELECTOR DE LOTES -->
-    <div class="lots-selector" role="tablist" aria-label="Seleccionar lote">
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL DEL LOTE
+    ====================================================== -->
 
-      <button class="lot-tab is-active" type="button" data-lot="lot-20">
-        Lote 20<br>
-        <span>Manzana 16</span>
-      </button>
-
-      <button class="lot-tab" type="button" data-lot="lot-3">
-        Lote 3<br>
-        <span>Manzana 05</span>
-      </button>
-
-      <button class="lot-tab" type="button" data-lot="lot-13">
-        Lote 13<br>
-        <span>Manzana 07</span>
-      </button>
-
-      <button class="lot-tab" type="button" data-lot="lot-5a">
-        Lote 5A<br>
-        <span>Manzana 05</span>
-      </button>
-
-      <button class="lot-tab" type="button" data-lot="lot-4">
-        Lote 4<br>
-        <span>Manzana 07</span>
-      </button>
-
-    </div>
+    <div class="lot-card" id="lot-card">
 
 
-    <!-- CONTENIDO DEL LOTE -->
-    <div class="lot-content">
+      <!-- =================================================
+           COLUMNA IZQUIERDA
+      ================================================== -->
 
-      <!-- INFORMACIÓN -->
       <div class="lot-info">
 
-        <p class="lot-number">LOTE 20</p>
+        <div class="lot-heading">
 
-        <h3>
-          Manzana 16
-        </h3>
+          <h2 id="lot-name">
+            Lote 20
+          </h2>
 
-        <p class="lot-description">
-          Un espacio diseñado para disfrutar la naturaleza,
-          la tranquilidad y el entorno del Lago de Chapala.
-        </p>
+          <h3 id="lot-block">
+            Manzana 16
+          </h3>
+
+        </div>
 
 
         <!-- CARACTERÍSTICAS -->
+
         <div class="lot-features">
 
-          <div class="lot-feature">
-            <strong>527.40 m²</strong>
-            <span>de terreno</span>
-          </div>
 
           <div class="lot-feature">
-            <strong>384.13 m²</strong>
-            <span>de construcción</span>
+
+            <div class="feature-icon">
+              ▣
+            </div>
+
+            <div>
+              <strong id="lot-land">
+                527.40 m²
+              </strong>
+
+              <span>
+                de terreno
+              </span>
+            </div>
+
           </div>
 
-          <div class="lot-feature">
-            <strong>3</strong>
-            <span>recámaras</span>
-          </div>
 
           <div class="lot-feature">
-            <strong>3</strong>
-            <span>baños completos</span>
+
+            <div class="feature-icon">
+              ⌂
+            </div>
+
+            <div>
+              <strong id="lot-construction">
+                384.13 m²
+              </strong>
+
+              <span>
+                construcción
+              </span>
+            </div>
+
           </div>
 
-          <div class="lot-feature">
-            <strong>3</strong>
-            <span>terrazas privadas</span>
-          </div>
 
           <div class="lot-feature">
-            <strong>1</strong>
-            <span>alberca</span>
+
+            <div class="feature-icon">
+              🛏
+            </div>
+
+            <div>
+              <strong id="lot-bedrooms">
+                3 Recámaras
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="lot-feature">
+
+            <div class="feature-icon">
+              ◇
+            </div>
+
+            <div>
+              <strong id="lot-half-bath">
+                1 Medio Baño
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="lot-feature">
+
+            <div class="feature-icon">
+              ♨
+            </div>
+
+            <div>
+              <strong id="lot-bathrooms">
+                3 Baños Completos
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="lot-feature">
+
+            <div class="feature-icon">
+              ♧
+            </div>
+
+            <div>
+              <strong id="lot-terraces">
+                3 Terrazas Privadas
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="lot-feature">
+
+            <div class="feature-icon">
+              ◉
+            </div>
+
+            <div>
+              <strong id="lot-pool-terrace">
+                Terraza con Alberca
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="lot-feature">
+
+            <div class="feature-icon">
+              ≋
+            </div>
+
+            <div>
+              <strong id="lot-pool">
+                Alberca
+              </strong>
+            </div>
+
           </div>
 
         </div>
 
 
-        <a href="#contacto" class="btn btn-primary lot-button">
-          Quiero más información
+        <!-- BOTÓN -->
+
+        <a
+          href="#contacto"
+          class="lot-quote-button"
+        >
+          Cotizar
+          <span>↗</span>
         </a>
 
       </div>
 
 
-      <!-- IMAGEN -->
-      <div class="lot-image-wrapper">
+      <!-- =================================================
+           COLUMNA CENTRAL - PLANO
+      ================================================== -->
 
-        <div
-          class="img-ph lot-image"
-          data-label="Imagen del lote"
-          style="--ar:4/3">
+      <div class="lot-plan">
+
+        <div class="lot-plan-frame">
+
+          <img
+            id="lot-plan-image"
+            src="images/lote-20.jpg"
+            alt="Plano casa muestra Lote 20"
+          >
+
         </div>
+
+      </div>
+
+
+      <!-- =================================================
+           COLUMNA DERECHA - FOTOGRAFÍAS
+      ================================================== -->
+
+      <div class="lot-gallery">
+
+
+        <!-- VISTA FRONTAL -->
+
+        <div class="lot-gallery-item">
+
+          <div class="lot-gallery-photo">
+
+            <img
+              id="lot-front-image"
+              src="images/lote-20-frontal.jpg"
+              alt="Vista frontal"
+            >
+
+          </div>
+
+          <span>
+            Vista Frontal
+          </span>
+
+        </div>
+
+
+        <!-- INTERIOR -->
+
+        <div class="lot-gallery-item">
+
+          <div class="lot-gallery-photo">
+
+            <img
+              id="lot-interior-image"
+              src="images/lote-20-interior.jpg"
+              alt="Interior"
+            >
+
+          </div>
+
+          <span>
+            Interior
+          </span>
+
+        </div>
+
 
       </div>
 
@@ -369,6 +593,7 @@
   </div>
 
 </section>
+
   <!-- AMENIDADES -->
   <section class="section section-light" id="amenidades">
     <div class="section-inner">
