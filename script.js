@@ -836,3 +836,150 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+/* ==========================================================
+   CARRUSEL SPA LA VID
+   ========================================================== */
+
+const carouselImages = [
+  "./amenidades/1_1_11zon.webp",
+  "./amenidades/2_2_11zon.webp",
+  "./amenidades/3_3_11zon.webp",
+  "./amenidades/4_4_11zon.webp",
+  "./amenidades/5_5_11zon.webp"
+];
+
+
+let carouselIndex = 1;
+
+
+const carouselSlides = document.querySelectorAll(
+  ".amenities-carousel .carousel-slide img"
+);
+
+
+const carouselDots = document.querySelectorAll(
+  ".amenities-carousel .carousel-dot"
+);
+
+
+const prevButton = document.querySelector(
+  ".amenities-carousel .carousel-btn-prev"
+);
+
+
+const nextButton = document.querySelector(
+  ".amenities-carousel .carousel-btn-next"
+);
+
+
+function updateAmenitiesCarousel() {
+
+  const total = carouselImages.length;
+
+
+  const previousIndex =
+    (carouselIndex - 1 + total) % total;
+
+
+  const nextIndex =
+    (carouselIndex + 1) % total;
+
+
+  /*
+   * IZQUIERDA
+   */
+  carouselSlides[0].src =
+    carouselImages[previousIndex];
+
+
+  /*
+   * CENTRO
+   */
+  carouselSlides[1].src =
+    carouselImages[carouselIndex];
+
+
+  /*
+   * DERECHA
+   */
+  carouselSlides[2].src =
+    carouselImages[nextIndex];
+
+
+  /*
+   * INDICADORES
+   */
+
+  carouselDots.forEach((dot, index) => {
+
+    dot.classList.toggle(
+      "active",
+      index === carouselIndex
+    );
+
+  });
+
+}
+
+
+function nextAmenitiesSlide() {
+
+  carouselIndex =
+    (carouselIndex + 1) %
+    carouselImages.length;
+
+  updateAmenitiesCarousel();
+
+}
+
+
+function prevAmenitiesSlide() {
+
+  carouselIndex =
+    (carouselIndex - 1 + carouselImages.length) %
+    carouselImages.length;
+
+  updateAmenitiesCarousel();
+
+}
+
+
+if (nextButton) {
+
+  nextButton.addEventListener(
+    "click",
+    nextAmenitiesSlide
+  );
+
+}
+
+
+if (prevButton) {
+
+  prevButton.addEventListener(
+    "click",
+    prevAmenitiesSlide
+  );
+
+}
+
+
+carouselDots.forEach((dot, index) => {
+
+  dot.addEventListener("click", () => {
+
+    carouselIndex = index;
+
+    updateAmenitiesCarousel();
+
+  });
+
+});
+
+
+/*
+ * INICIAR
+ */
+
+updateAmenitiesCarousel();

@@ -2274,6 +2274,9 @@ background:
     gap: 5px;
   }
 
+/* =========================================================
+   12años de experiencia
+========================================================= */
 
   .lots-selector::-webkit-scrollbar {
     display: none;
@@ -2367,22 +2370,880 @@ background:
   }
 
 }
+.experiencia {
+    width: 100%;
+    background: rgba(6, 78, 59, 0.95);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+        0 10px 35px rgba(0, 0, 0, 0.20);
+}
+.experiencia::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.07) 0%,
+        rgba(255,255,255,0) 35%,
+        rgba(0,0,0,.05) 100%
+    );
+}
+
+
+.experiencia-contenedor {
+    width: 100%;
+    min-height: 300px;
+
+    display: grid;
+    grid-template-columns: 42% 58%;
+}
+
+.experiencia-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.experiencia-titulo h2 {
+    margin: 0;
+    color: white;
+
+    font-family: inherit;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: 1px;
+}
+
+.experiencia-foto {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.experiencia-foto > img:first-child {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.experiencia-logo {
+    position: absolute;
+
+    width: 250px !important;
+    height: auto !important;
+
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    object-fit: contain !important;
+}
+
+/* =========================================================
+12 años
+========================================================= */
+/* ==========================================================
+  AMENIDADES
+   ========================================================== */
+
+.amenities-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  /* Verde */
+  background: rgba(6, 78, 59, 0.96);
+
+  /* Efecto vidrio */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+}
+
 
 /* ==========================================================
-   AMENIDADES
+   REFLEJO SUTIL
    ========================================================== */
-.amenities-grid{
-  max-width: var(--max-w);
-  margin: 2.5rem auto 0;
-  padding: 0 var(--gap);
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.2rem, 3vw, 2rem);
+
+.amenities-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(0, 0, 0, 0.025) 100%
+  );
 }
-.amenity-card h3{ margin-top: .9rem; margin-bottom:.3rem; font-size:1.1rem; }
-.amenity-card p{ font-size: .92rem; color: var(--ink-soft); margin:0; }
-.amenity-card .img-ph{ transition: transform .5s var(--ease); }
-.amenity-card:hover .img-ph{ transform: scale(1.02); }
+
+
+/* ==========================================================
+   CONTENEDOR
+   ========================================================== */
+
+.amenities-inner {
+  position: relative;
+  z-index: 1;
+
+  width: min(100%, 1500px);
+
+  margin: 0 auto;
+
+  padding: 45px 30px 65px;
+}
+
+
+/* ==========================================================
+   TÍTULO
+   ========================================================== */
+
+.amenities-inner h2 {
+  margin: 0;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  font-size: clamp(1.7rem, 2.6vw, 2.15rem);
+
+  font-weight: 300;
+
+  line-height: 1.15;
+
+  letter-spacing: 1px;
+}
+
+
+/* ==========================================================
+   LÍNEA
+   ========================================================== */
+
+.amenities-line {
+  width: 82%;
+  height: 1px;
+
+  margin: 38px auto 35px;
+
+  background: rgba(255, 255, 255, 0.75);
+}
+
+
+/* ==========================================================
+   GRID DE AMENIDADES
+   4 ARRIBA + 3 ABAJO
+   ========================================================== */
+
+.amenities-grid {
+  width: 92%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+
+  column-gap: 20px;
+  row-gap: 60px;
+
+  align-items: start;
+  justify-items: center;
+
+  padding: 35px 20px 20px;
+}
+
+
+/* ==========================================================
+   PRIMERA FILA
+   ========================================================== */
+
+.amenity-item:nth-child(1) {
+  grid-column: 1 / span 3;
+}
+
+.amenity-item:nth-child(2) {
+  grid-column: 4 / span 3;
+}
+
+.amenity-item:nth-child(3) {
+  grid-column: 7 / span 3;
+}
+
+.amenity-item:nth-child(4) {
+  grid-column: 10 / span 3;
+}
+
+
+/* ==========================================================
+   SEGUNDA FILA
+   ========================================================== */
+
+.amenity-item:nth-child(5) {
+  grid-column: 2 / span 3;
+}
+
+.amenity-item:nth-child(6) {
+  grid-column: 5 / span 3;
+}
+
+.amenity-item:nth-child(7) {
+  grid-column: 8 / span 3;
+}
+
+
+/* ==========================================================
+   ELEMENTO DE AMENIDAD
+   ========================================================== */
+
+.amenity-item {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: flex-start;
+}
+
+
+/* ==========================================================
+   CÍRCULO
+   ========================================================== */
+
+.amenity-circle {
+  position: relative;
+
+  width: 155px;
+  height: 155px;
+
+  flex-shrink: 0;
+
+  /* NO CREAR OTRO CÍRCULO */
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ==========================================================
+   IMÁGENES
+   ========================================================== */
+
+.amenity-circle img {
+  width: 100% !important;
+  height: 100% !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  display: block;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: none !important;
+
+  object-fit: contain !important;
+  object-position: center;
+
+  transform: scale(1) !important;
+
+  transition: none !important;
+}
+
+/* ==========================================================
+   EFECTO HOVER
+   Pequeña animación sin crear ningún círculo adicional
+   ========================================================== */
+/* ALBERCA */
+.amenity-item:nth-child(1) img {
+  transform: scale(1.00) !important;
+}
+
+/* SPA */
+.amenity-item:nth-child(2) img {
+  transform: scale(1.00) !important;
+}
+
+/* ÁREAS DE NIÑOS */
+.amenity-item:nth-child(3) img {
+  transform: scale(1.00) !important;
+}
+
+/* MIRADOR */
+.amenity-item:nth-child(4) img {
+  transform: scale(1.00) !important;
+}
+
+/* RESTAURANTE */
+.amenity-item:nth-child(5) img {
+  transform: scale(1.0) !important;
+}
+
+/* CABALLERIZAS */
+.amenity-item:nth-child(6) img {
+  transform: scale(1.0) !important;
+}
+
+/* GLAMPING */
+.amenity-item:nth-child(7) img {
+  transform: scale(0.8) !important;
+}
+/* ==========================================================
+   TEXTO DE LAS AMENIDADES
+   ========================================================== */
+
+.amenity-item span {
+  display: block;
+
+  margin-top: 14px;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  font-size: 11px;
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  letter-spacing: 2px;
+
+  text-align: center;
+}
+
+
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media (max-width: 1000px) {
+
+  .amenities-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .amenities-grid {
+    width: 100%;
+    column-gap: 10px;
+  }
+
+  .amenity-circle {
+    width: 135px;
+    height: 135px;
+  }
+}
+
+
+/* ==========================================================
+   MÓVIL
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+  .amenities-inner {
+    width: 100%;
+    padding: 35px 15px 50px;
+  }
+
+  .amenities-line {
+    width: 90%;
+    margin-top: 28px;
+    margin-bottom: 25px;
+  }
+
+  .amenities-grid {
+    width: 100%;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    column-gap: 10px;
+    row-gap: 38px;
+
+    padding: 20px 5px;
+  }
+
+  /* Anula la distribución de escritorio */
+  .amenity-item:nth-child(n) {
+    grid-column: auto;
+  }
+
+  .amenity-circle {
+    width: 105px;
+    height: 105px;
+  }
+
+  .amenity-item span {
+    margin-top: 11px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+  }
+}
+
+
+/* ==========================================================
+   MÓVILES PEQUEÑOS
+   ========================================================== */
+
+@media (max-width: 420px) {
+
+  .amenities-grid {
+    column-gap: 5px;
+    row-gap: 32px;
+  }
+
+  .amenity-circle {
+    width: 92px;
+    height: 92px;
+  }
+}
+/* ==========================================================
+  AMENIDADES
+   ========================================================== */
+
+
+/* ==========================================================
+   CARRUSEL DE AMENIDADES
+   ========================================================== */
+
+.amenities-carousel {
+  width: 100%;
+  margin-top: 105px;
+}
+
+
+/* TÍTULO DEL CARRUSEL */
+
+.amenities-carousel h3 {
+  margin: 0 0 25px;
+
+  text-align: center;
+
+  color: #fff;
+
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+
+  font-weight: 300;
+
+  line-height: 1.15;
+
+  letter-spacing: 1px;
+}
+
+
+/* CONTENEDOR */
+
+.carousel-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* PISTA */
+
+.carousel-track {
+  width: 82%;
+
+  max-width: 1000px;
+
+  display: grid;
+
+  grid-template-columns: 145px minmax(400px, 1fr) 145px;
+
+  gap: 20px;
+
+  align-items: center;
+
+  overflow: hidden;
+}
+
+
+/* CADA FOTO */
+
+.carousel-slide {
+  overflow: hidden;
+
+  height: 245px;
+
+  position: relative;
+
+  background: rgba(0, 0, 0, .15);
+}
+
+
+.carousel-slide img {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* FOTOS LATERALES */
+
+.carousel-slide-side {
+  height: 245px;
+
+  opacity: .95;
+}
+
+
+/* FOTO CENTRAL */
+
+.carousel-slide-active {
+  height: 245px;
+}
+/* ==========================================================
+   BOTÓN CONTACTA A UN ASESOR
+   ========================================================== */
+
+.amenities-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  margin-top: 45px;
+}
+
+
+/* BOTÓN PRINCIPAL */
+
+.contact-btn {
+  height: 46px;
+
+  padding: 0 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  color: rgba(6, 78, 59, 1);
+
+  background: rgba(255, 255, 255, 0.90);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  border-radius: 14px;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  letter-spacing: .2px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+
+.contact-btn:hover {
+  background: rgba(255, 255, 255, 1);
+
+  transform: translateY(-2px);
+}
+
+
+/* BOTÓN DE LA FLECHA */
+
+.contact-arrow {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  color: rgba(6, 78, 59, 1);
+
+  background: rgba(255, 255, 255, 0.90);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  border-radius: 13px;
+
+  font-size: 21px;
+  font-weight: 400;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+
+.contact-arrow:hover {
+  background: #fff;
+
+  transform: translateY(-2px);
+}
+
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+
+.carousel-btn {
+  position: absolute;
+
+  z-index: 5;
+
+  width: 58px;
+
+  height: 58px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  color: #fff;
+
+  background: rgba(6, 78, 59, .88);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,.20);
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.20),
+    inset 0 1px 0 rgba(255,255,255,.12);
+
+  font-family: Arial, sans-serif;
+
+  font-size: 38px;
+
+  font-weight: 200;
+
+  line-height: 1;
+
+  transition:
+    transform .3s ease,
+    background .3s ease;
+}
+
+
+.carousel-btn:hover {
+  transform: scale(1.08);
+
+  background: rgba(6, 78, 59, 1);
+}
+
+
+/* POSICIONES */
+
+.carousel-btn-prev {
+  left: 5%;
+}
+
+.carousel-btn-next {
+  right: 5%;
+}
+
+
+/* ==========================================================
+   PUNTOS
+   ========================================================== */
+
+.carousel-dots {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 18px;
+}
+
+
+.carousel-dot {
+  width: 8px;
+
+  height: 8px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,255,255,.9);
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+
+.carousel-dot.active {
+  background: #fff;
+
+  transform: scale(1.15);
+}
+
+/* PRIMERA FILA */
+
+.amenity-item:nth-child(1) {
+  grid-column: 1 / span 3;
+}
+
+.amenity-item:nth-child(2) {
+  grid-column: 4 / span 3;
+}
+
+.amenity-item:nth-child(3) {
+  grid-column: 7 / span 3;
+}
+
+.amenity-item:nth-child(4) {
+  grid-column: 10 / span 3;
+}
+
+
+/* SEGUNDA FILA */
+
+.amenity-item:nth-child(5) {
+  grid-column: 2 / span 3;
+}
+
+.amenity-item:nth-child(6) {
+  grid-column: 5 / span 3;
+}
+
+.amenity-item:nth-child(7) {
+  grid-column: 8 / span 3;
+}
+
+
+/* ITEM */
+
+.amenity-item {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  text-align: center;
+}
+
+
+/* ÍCONO */
+
+.amenity-item img {
+  width: 58px;
+
+  height: 58px;
+
+  display: block;
+
+  object-fit: contain;
+
+  margin: 0 auto 10px;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+
+/* NOMBRE */
+
+.amenity-item span {
+  display: block;
+
+  color: rgba(255, 255, 255, 0.95);
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 1.25;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+/* Hover */
+
+.amenity-item:hover img {
+  transform: scale(1.06);
+
+  opacity: 0.9;
+}
 
 /* ==========================================================
    UBICACIÓN
