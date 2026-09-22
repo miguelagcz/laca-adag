@@ -842,74 +842,156 @@ document.addEventListener("DOMContentLoaded", () => {
    ========================================================== */
 
 const carouselImages = [
-  "./amenidades/1_1_11zon.webp",
-  "./amenidades/2_2_11zon.webp",
-  "./amenidades/3_3_11zon.webp",
-  "./amenidades/4_4_11zon.webp",
-  "./amenidades/5_5_11zon.webp"
+  "./amenidades/1.webp",
+  "./amenidades/2.webp",
+  "./amenidades/3.webp",
+  "./amenidades/4.webp",
+  "./amenidades/5.webp"
 ];
 
+let carouselIndex = 0;
 
-let carouselIndex = 1;
-
+const carousel = document.querySelector(".amenities-carousel");
 
 const carouselSlides = document.querySelectorAll(
   ".amenities-carousel .carousel-slide img"
 );
 
-
 const carouselDots = document.querySelectorAll(
   ".amenities-carousel .carousel-dot"
 );
-
 
 const prevButton = document.querySelector(
   ".amenities-carousel .carousel-btn-prev"
 );
 
-
 const nextButton = document.querySelector(
   ".amenities-carousel .carousel-btn-next"
 );
 
+/* ==========================================================
+   ACTUALIZAR CARRUSEL — CROSSFADE
+   ========================================================== */
 
 function updateAmenitiesCarousel() {
 
   const total = carouselImages.length;
 
-
   const previousIndex =
     (carouselIndex - 1 + total) % total;
-
 
   const nextIndex =
     (carouselIndex + 1) % total;
 
 
-  /*
-   * IZQUIERDA
-   */
-  carouselSlides[0].src =
-    carouselImages[previousIndex];
+  const indexes = [
+    previousIndex,
+    carouselIndex,
+    nextIndex
+  ];
 
 
-  /*
-   * CENTRO
-   */
-  carouselSlides[1].src =
-    carouselImages[carouselIndex];
+  carouselSlides.forEach((img, i) => {
+
+    const slide = img.closest(".carousel-slide");
+
+    if (!slide) return;
+
+    const newSrc = carouselImages[indexes[i]];
 
 
-  /*
-   * DERECHA
-   */
-  carouselSlides[2].src =
-    carouselImages[nextIndex];
+    /* ------------------------------------------
+       Crear segunda imagen si todavía no existe
+       ------------------------------------------ */
+
+    let nextImg = slide.querySelector(
+      ".carousel-crossfade-img"
+    );
+
+    if (!nextImg) {
+
+      nextImg = document.createElement("img");
+
+      nextImg.className =
+        "carousel-crossfade-img";
+
+      nextImg.alt = img.alt;
+
+      slide.appendChild(nextImg);
+    }
 
 
-  /*
-   * INDICADORES
-   */
+    /* ------------------------------------------
+       Preparar nueva imagen
+       ------------------------------------------ */
+
+    nextImg.src = newSrc;
+
+
+    /*
+     * La nueva imagen empieza invisible.
+     */
+
+    nextImg.classList.remove(
+      "carousel-crossfade-show"
+    );
+
+
+    /*
+     * La imagen actual queda visible.
+     */
+
+    img.classList.remove(
+      "carousel-crossfade-hide"
+    );
+
+
+    /* ------------------------------------------
+       Esperar a que cargue la nueva imagen
+       ------------------------------------------ */
+
+    nextImg.onload = () => {
+
+      requestAnimationFrame(() => {
+
+        nextImg.classList.add(
+          "carousel-crossfade-show"
+        );
+
+        img.classList.add(
+          "carousel-crossfade-hide"
+        );
+
+      });
+
+
+      /*
+       * Al terminar el crossfade,
+       * convertimos la nueva en la actual.
+       */
+
+      setTimeout(() => {
+
+        img.src = newSrc;
+
+        img.classList.remove(
+          "carousel-crossfade-hide"
+        );
+
+        nextImg.classList.remove(
+          "carousel-crossfade-show"
+        );
+
+      }, 200);
+
+    };
+
+  });
+
+
+  /* ------------------------------------------
+     Indicadores
+     ------------------------------------------ */
 
   carouselDots.forEach((dot, index) => {
 
@@ -923,6 +1005,10 @@ function updateAmenitiesCarousel() {
 }
 
 
+/* ==========================================================
+   SIGUIENTE
+   ========================================================== */
+
 function nextAmenitiesSlide() {
 
   carouselIndex =
@@ -933,6 +1019,10 @@ function nextAmenitiesSlide() {
 
 }
 
+
+/* ==========================================================
+   ANTERIOR
+   ========================================================== */
 
 function prevAmenitiesSlide() {
 
@@ -945,41 +1035,124 @@ function prevAmenitiesSlide() {
 }
 
 
+/* ==========================================================
+   FLECHA SIGUIENTE
+   ========================================================== */
+
 if (nextButton) {
 
   nextButton.addEventListener(
     "click",
-    nextAmenitiesSlide
+    () => {
+
+      nextAmenitiesSlide();
+
+      restartAutoPlay();
+
+    }
   );
 
 }
 
+
+/* ==========================================================
+   FLECHA ANTERIOR
+   ========================================================== */
 
 if (prevButton) {
 
   prevButton.addEventListener(
     "click",
-    prevAmenitiesSlide
+    () => {
+
+      prevAmenitiesSlide();
+
+      restartAutoPlay();
+
+    }
   );
 
 }
 
 
+/* ==========================================================
+   PUNTOS
+   ========================================================== */
+
 carouselDots.forEach((dot, index) => {
 
-  dot.addEventListener("click", () => {
+  dot.addEventListener(
+    "click",
+    () => {
 
-    carouselIndex = index;
+      carouselIndex = index;
 
-    updateAmenitiesCarousel();
+      updateAmenitiesCarousel();
 
-  });
+      restartAutoPlay();
+
+    }
+  );
 
 });
 
 
-/*
- * INICIAR
- */
+/* ==========================================================
+   AUTOPLAY
+   ========================================================== */
+
+let carouselTimer;
+
+function startAutoPlay() {
+
+  carouselTimer = setInterval(() => {
+
+    nextAmenitiesSlide();
+
+  }, 9000);
+
+}
+
+
+function stopAutoPlay() {
+
+  clearInterval(carouselTimer);
+
+}
+
+
+function restartAutoPlay() {
+
+  stopAutoPlay();
+
+  startAutoPlay();
+
+}
+
+
+/* ==========================================================
+   PAUSA AL PASAR EL MOUSE
+   ========================================================== */
+
+if (carousel) {
+
+  carousel.addEventListener(
+    "mouseenter",
+    stopAutoPlay
+  );
+
+  carousel.addEventListener(
+    "mouseleave",
+    startAutoPlay
+  );
+
+}
+
+
+/* ==========================================================
+   INICIAR
+   ========================================================== */
 
 updateAmenitiesCarousel();
+
+startAutoPlay();

@@ -2831,25 +2831,23 @@ background:
     height: 92px;
   }
 }
-/* ==========================================================
-  AMENIDADES
-   ========================================================== */
-
 
 /* ==========================================================
    CARRUSEL DE AMENIDADES
    ========================================================== */
-
 .amenities-carousel {
   width: 100%;
-  margin-top: 105px;
+  margin-top: 60px;
+  position: relative;
 }
 
 
-/* TÍTULO DEL CARRUSEL */
+/* ==========================================================
+   TÍTULO
+   ========================================================== */
 
 .amenities-carousel h3 {
-  margin: 0 0 25px;
+  margin: 0 0 28px;
 
   text-align: center;
 
@@ -2865,7 +2863,9 @@ background:
 }
 
 
-/* CONTENEDOR */
+/* ==========================================================
+   CONTENEDOR
+   ========================================================== */
 
 .carousel-wrapper {
   position: relative;
@@ -2873,234 +2873,245 @@ background:
   width: 100%;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 }
 
 
-/* PISTA */
+/* ==========================================================
+   PISTA HORIZONTAL
+   ========================================================== */
 
 .carousel-track {
-  width: 82%;
-
-  max-width: 1000px;
+  width: 96%;
+max-width: 1450px;
 
   display: grid;
 
-  grid-template-columns: 145px minmax(400px, 1fr) 145px;
+  grid-template-columns:
+    280px
+    minmax(500px, 1fr)
+    280px;
 
-  gap: 20px;
+  gap: 22px;
 
   align-items: center;
+  justify-content: center;
 
   overflow: hidden;
 }
 
-
-/* CADA FOTO */
+/* ==========================================================
+   CONTENEDOR DE LAS FOTOS
+   ========================================================== */
 
 .carousel-slide {
-  overflow: hidden;
-
-  height: 245px;
-
   position: relative;
 
-  background: rgba(0, 0, 0, .15);
+  width: 100%;
+  height: 245px;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  flex-shrink: 0;
 }
 
 
-.carousel-slide img {
-  width: 100%;
+/* ==========================================================
+   IMÁGENES
+   ========================================================== */
 
+/* ==========================================================
+   CROSSFADE LIMPIO DE IMÁGENES
+   ========================================================== */
+
+.carousel-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Imagen actual */
+
+.carousel-slide > img:not(.carousel-crossfade-img) {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
   height: 100%;
 
   display: block;
 
   object-fit: cover;
+  object-position: center center;
+
+  opacity: 1;
+
+  transition:
+    opacity .75s cubic-bezier(.4,0,.2,1);
 }
 
 
-/* FOTOS LATERALES */
+/* Imagen siguiente */
 
-.carousel-slide-side {
-  height: 245px;
+.carousel-slide .carousel-crossfade-img {
+  position: absolute;
+  inset: 0;
 
-  opacity: .95;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+
+  opacity: 0;
+
+  transform: scale(1);
+
+  pointer-events: none;
+
+  transition:
+    opacity .75s cubic-bezier(.4,0,.2,1);
 }
 
 
-/* FOTO CENTRAL */
+/* Nueva imagen entrando */
 
-.carousel-slide-active {
-  height: 245px;
+.carousel-slide .carousel-crossfade-img.carousel-crossfade-show {
+  opacity: 1;
+}
+
+
+/* Imagen anterior desapareciendo */
+
+.carousel-slide > img:not(.carousel-crossfade-img).carousel-crossfade-hide {
+  opacity: 0;
 }
 /* ==========================================================
-   BOTÓN CONTACTA A UN ASESOR
+   FOTOS LATERALES
    ========================================================== */
 
-.amenities-contact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.carousel-slide-side {
+  width: 100%;
+  height: 245px;
 
-  gap: 6px;
-
-  margin-top: 45px;
+  opacity: .78;
 }
 
 
-/* BOTÓN PRINCIPAL */
+/* ==========================================================
+   FOTO CENTRAL
+   ========================================================== */
 
-.contact-btn {
-  height: 46px;
+.carousel-slide-active {
+  width: 100%;
+  height: 245px;
 
-  padding: 0 22px;
+  opacity: 1;
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  text-decoration: none;
+/* ==========================================================
+   EFECTO HOVER
+   ========================================================== */
 
-  color: rgba(6, 78, 59, 1);
+.carousel-slide:hover > img:not(.carousel-crossfade-img) {
+  transform: scale(1.025);
+}
 
-  background: rgba(255, 255, 255, 0.90);
-
-  border: 1px solid rgba(255, 255, 255, 0.65);
-
-  border-radius: 14px;
-
-  font-size: 12px;
-
-  font-weight: 400;
-
-  letter-spacing: .2px;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
+.carousel-slide > img:not(.carousel-crossfade-img) {
   transition:
-    background .3s ease,
-    transform .3s ease;
-}
-
-
-.contact-btn:hover {
-  background: rgba(255, 255, 255, 1);
-
-  transform: translateY(-2px);
-}
-
-
-/* BOTÓN DE LA FLECHA */
-
-.contact-arrow {
-  width: 46px;
-  height: 46px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-decoration: none;
-
-  color: rgba(6, 78, 59, 1);
-
-  background: rgba(255, 255, 255, 0.90);
-
-  border: 1px solid rgba(255, 255, 255, 0.65);
-
-  border-radius: 13px;
-
-  font-size: 21px;
-  font-weight: 400;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  transition:
-    background .3s ease,
-    transform .3s ease;
-}
-
-
-.contact-arrow:hover {
-  background: #fff;
-
-  transform: translateY(-2px);
+    opacity .75s cubic-bezier(.4,0,.2,1),
+    transform .45s ease;
 }
 
 /* ==========================================================
-   BOTONES
+   FLECHAS
+   SIN CÍRCULO
+   SIN FONDO
+   SIN BORDE
    ========================================================== */
 
 .carousel-btn {
   position: absolute;
 
-  z-index: 5;
+  top: 50%;
+  z-index: 20;
 
-  width: 58px;
+  width: 42px;
+  height: 60px;
 
-  height: 58px;
-
-  border: 0;
-
-  border-radius: 50%;
+  padding: 0;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
-
-  cursor: pointer;
 
   color: #fff;
 
-  background: rgba(6, 78, 59, .88);
+  background: transparent !important;
 
-  backdrop-filter: blur(12px);
+  border: none !important;
+  border-radius: 0 !important;
 
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: none !important;
 
-  border: 1px solid rgba(255,255,255,.20);
-
-  box-shadow:
-    0 5px 20px rgba(0,0,0,.20),
-    inset 0 1px 0 rgba(255,255,255,.12);
+  cursor: pointer;
 
   font-family: Arial, sans-serif;
 
-  font-size: 38px;
+  font-size: 48px;
 
   font-weight: 200;
 
   line-height: 1;
 
+  opacity: .95;
+
+  transform: translateY(-50%);
+
   transition:
-    transform .3s ease,
-    background .3s ease;
+    opacity .25s ease,
+    transform .25s ease;
 }
 
 
-.carousel-btn:hover {
-  transform: scale(1.08);
-
-  background: rgba(6, 78, 59, 1);
-}
-
-
-/* POSICIONES */
+/* ==========================================================
+   POSICIÓN DE FLECHAS
+   ========================================================== */
 
 .carousel-btn-prev {
-  left: 5%;
+  left: 3%;
 }
 
 .carousel-btn-next {
-  right: 5%;
+  right: 3%;
+}
+
+
+/* ==========================================================
+   HOVER FLECHAS
+   ========================================================== */
+
+.carousel-btn:hover {
+  background: transparent !important;
+
+  border: none !important;
+
+  box-shadow: none !important;
+
+  opacity: .6;
+
+  transform:
+    translateY(-50%)
+    scale(1.08);
 }
 
 
@@ -3108,142 +3119,427 @@ background:
    PUNTOS
    ========================================================== */
 
+/* =========================================================
+   INDICADORES MODERNOS — VIDRIO VERDE
+   ========================================================= */
+
 .carousel-dots {
   display: flex;
-
   align-items: center;
-
   justify-content: center;
+  gap: 7px;
 
-  gap: 9px;
+  margin-top: 20px;
 
-  margin-top: 18px;
+  padding: 7px 10px;
+
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: rgba(6, 78, 59, .55);
+
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    inset 0 -1px 0 rgba(0,0,0,.12),
+    0 7px 22px rgba(0,0,0,.16);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 
-.carousel-dot {
-  width: 8px;
+/* Cada indicador */
 
-  height: 8px;
+.carousel-dot {
+  position: relative;
+
+  width: 9px;
+  height: 9px;
 
   padding: 0;
 
+  border: 1px solid rgba(255,255,255,.45);
   border-radius: 50%;
 
-  border: 1px solid rgba(255,255,255,.9);
-
-  background: transparent;
+  background: rgba(255,255,255,.12);
 
   cursor: pointer;
 
-  transition:
-    transform .25s ease,
-    background .25s ease;
-}
-
-
-.carousel-dot.active {
-  background: #fff;
-
-  transform: scale(1.15);
-}
-
-/* PRIMERA FILA */
-
-.amenity-item:nth-child(1) {
-  grid-column: 1 / span 3;
-}
-
-.amenity-item:nth-child(2) {
-  grid-column: 4 / span 3;
-}
-
-.amenity-item:nth-child(3) {
-  grid-column: 7 / span 3;
-}
-
-.amenity-item:nth-child(4) {
-  grid-column: 10 / span 3;
-}
-
-
-/* SEGUNDA FILA */
-
-.amenity-item:nth-child(5) {
-  grid-column: 2 / span 3;
-}
-
-.amenity-item:nth-child(6) {
-  grid-column: 5 / span 3;
-}
-
-.amenity-item:nth-child(7) {
-  grid-column: 8 / span 3;
-}
-
-
-/* ITEM */
-
-.amenity-item {
-  width: 100%;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: flex-start;
-
-  text-align: center;
-}
-
-
-/* ÍCONO */
-
-.amenity-item img {
-  width: 58px;
-
-  height: 58px;
-
-  display: block;
-
-  object-fit: contain;
-
-  margin: 0 auto 10px;
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.18);
 
   transition:
-    transform 0.35s ease,
-    opacity 0.35s ease;
-}
-
-
-/* NOMBRE */
-
-.amenity-item span {
-  display: block;
-
-  color: rgba(255, 255, 255, 0.95);
-
-  font-size: 10px;
-
-  font-weight: 500;
-
-  line-height: 1.25;
-
-  letter-spacing: 2px;
-
-  text-transform: uppercase;
+    width .4s cubic-bezier(.22,.61,.36,1),
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease,
+    transform .35s ease;
 }
 
 
 /* Hover */
 
-.amenity-item:hover img {
-  transform: scale(1.06);
-
-  opacity: 0.9;
+.carousel-dot:hover {
+  background: rgba(255,255,255,.42);
+  border-color: rgba(255,255,255,.75);
+  transform: scale(1.2);
 }
+
+
+/* Indicador activo */
+
+.carousel-dot.active {
+  width: 32px;
+  height: 9px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.88);
+
+  border-color: rgba(255,255,255,.95);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 0 14px rgba(255,255,255,.14);
+
+  transform: none;
+}
+
+/* ==========================================================
+   CONTACTO
+   ========================================================== */
+/* =========================================================
+   BOTONES CONTACTO — MISMO VIDRIO QUE LOS OTROS BOTONES
+   ========================================================= */
+
+.amenities-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 35px;
+}
+
+
+/* ---------- BOTÓN PRINCIPAL ---------- */
+
+.contact-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 54px;
+  min-height: 54px;
+  padding: 0 1.5rem;
+
+  color: #fff;
+  background: rgba(6, 78, 59, .55);
+
+  border: 1px solid rgba(6, 78, 59, .45);
+  border-radius: 12px;
+
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 8px 25px rgba(6,78,59,.14);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  overflow: hidden;
+
+  transition:
+    background .35s ease,
+    color .35s ease,
+    border-color .35s ease,
+    border-radius .35s ease,
+    padding-right .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+
+/* ---------- FLECHA ---------- */
+
+.contact-arrow {
+  position: relative;
+
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  background: rgba(6, 78, 59, .55);
+
+  border: 1px solid rgba(6, 78, 59, .45);
+  border-radius: 12px;
+
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 8px 25px rgba(6,78,59,.14);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  overflow: hidden;
+
+  transition:
+    width .35s ease,
+    min-width .35s ease,
+    background .35s ease,
+    color .35s ease,
+    border-color .35s ease,
+    border-radius .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+
+/* =========================================================
+   BRILLO DE VIDRIO
+   ========================================================= */
+
+.contact-btn::before,
+.contact-arrow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.22) 0%,
+      rgba(255,255,255,.08) 25%,
+      rgba(255,255,255,0) 60%
+    );
+
+  opacity: 1;
+  border-radius: inherit;
+
+  transition:
+    background .35s ease,
+    opacity .35s ease;
+}
+
+
+/* El texto/flecha quedan encima del brillo */
+
+.contact-btn,
+.contact-arrow {
+  isolation: isolate;
+}
+
+.contact-btn::before,
+.contact-arrow::before {
+  z-index: -1;
+}
+
+
+/* =========================================================
+   HOVER — SE FUSIONAN Y CAMBIAN A VIDRIO BLANCO
+   ========================================================= */
+
+.amenities-contact:hover {
+  gap: 0;
+}
+
+
+/* botón izquierdo */
+
+.amenities-contact:hover .contact-btn {
+  color: rgba(6,78,59,1);
+
+  background: rgba(255,255,255,.72);
+
+  border-color: rgba(255,255,255,.70);
+
+  border-radius: 12px 0 0 12px;
+
+  padding-right: 24px;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 -1px 0 rgba(6,78,59,.04),
+    0 12px 30px rgba(6,78,59,.18);
+}
+
+
+/* flecha derecha */
+
+.amenities-contact:hover .contact-arrow {
+  color: rgba(6,78,59,1);
+
+  background: rgba(255,255,255,.72);
+
+  border-color: rgba(255,255,255,.70);
+
+  border-radius: 0 12px 12px 0;
+
+  transform:
+    translateY(-2px)
+    translateX(1px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 -1px 0 rgba(6,78,59,.04),
+    0 12px 30px rgba(6,78,59,.18);
+}
+
+
+/* brillo más fuerte cuando se vuelve blanco */
+
+.amenities-contact:hover .contact-btn::before,
+.amenities-contact:hover .contact-arrow::before {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.48) 0%,
+      rgba(255,255,255,.16) 25%,
+      rgba(255,255,255,0) 65%
+    );
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   PEQUEÑO MOVIMIENTO AL PASAR EL MOUSE
+   ========================================================= */
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+}
+
+.contact-arrow:hover {
+  transform:
+    translateY(-2px)
+    translateX(1px);
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media (max-width: 1100px) {
+
+  .carousel-track {
+    width: 88%;
+
+    grid-template-columns:
+      220px
+      minmax(400px, 1fr)
+      220px;
+
+    gap: 16px;
+  }
+
+  .carousel-slide,
+  .carousel-slide-side,
+  .carousel-slide-active {
+    height: 220px;
+  }
+
+  .carousel-btn-prev {
+    left: 1%;
+  }
+
+  .carousel-btn-next {
+    right: 1%;
+  }
+}
+
+
+/* ==========================================================
+   MÓVIL
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+  .amenities-carousel {
+    margin-top: 70px;
+  }
+
+  .amenities-carousel h3 {
+    margin-bottom: 22px;
+  }
+
+  .carousel-track {
+    width: 82%;
+
+    display: block;
+
+    max-width: 600px;
+  }
+
+  .carousel-slide-side {
+    display: none;
+  }
+
+  .carousel-slide-active {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .carousel-btn {
+    width: 34px;
+    height: 55px;
+
+    font-size: 42px;
+  }
+
+  .carousel-btn-prev {
+    left: 0;
+  }
+
+  .carousel-btn-next {
+    right: 0;
+  }
+}
+
+
+/* ==========================================================
+   MÓVIL PEQUEÑO
+   ========================================================== */
+
+@media (max-width: 420px) {
+
+  .carousel-track {
+    width: 80%;
+  }
+
+  .carousel-btn {
+    font-size: 38px;
+  }
+}
+
+
+/* ==========================================================
+   AMENIDADES FINAL 
+   ========================================================== */
 
 /* ==========================================================
    UBICACIÓN
@@ -4014,4 +4310,132 @@ input:focus, textarea:focus{
 #lot-interior-image {
   opacity: 1;
   transition: opacity .25s ease;
+}
+
+
+/* =========================================================
+   CONTACTA — MISMO LENGUAJE DEL MASTERPLAN
+   ========================================================= */
+
+.contact-btn,
+.contact-arrow {
+  background: rgba(6, 78, 59, .55);
+
+  border: 1px solid rgba(6, 78, 59, .45);
+
+  color: #fff;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 8px 25px rgba(6,78,59,.14);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+
+/* Botón */
+
+.contact-btn {
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    border-radius .35s ease,
+    padding-right .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+
+.contact-btn:hover {
+
+  background: rgba(6,78,59,.72);
+
+  border-color: rgba(255,255,255,.22);
+
+  border-radius: 10px;
+
+  padding-right: 27px;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    0 12px 30px rgba(6,78,59,.24);
+}
+
+
+/* Flecha ↗ */
+
+.contact-arrow {
+
+  transition:
+    width .35s ease,
+    background .35s ease,
+    color .35s ease,
+    border-color .35s ease,
+    border-radius .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+
+.contact-arrow:hover {
+
+  width: 54px;
+
+  background: rgba(255,255,255,.90);
+
+  color: rgba(6,78,59,1);
+
+  border-color: rgba(255,255,255,.65);
+
+  border-radius: 10px;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    0 12px 30px rgba(6,78,59,.20);
+}
+
+/* =========================================================
+   TRANSICIÓN LIMPIA DEL CARRUSEL
+   ========================================================= */
+
+.amenities-carousel .carousel-slide {
+  overflow: hidden;
+}
+
+.amenities-carousel .carousel-slide img {
+  opacity: 1;
+  transition:
+    opacity .65s ease,
+    transform .65s ease;
+}
+
+
+/* Cuando cambia la imagen */
+.amenities-carousel .carousel-slide.is-changing img {
+  opacity: 0;
+  transform: scale(1.015);
+}
+
+
+/* La imagen que acaba de entrar */
+.amenities-carousel .carousel-slide.is-entering img {
+  animation: amenitiesFadeIn .65s ease forwards;
+}
+
+
+@keyframes amenitiesFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.015);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
