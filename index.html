@@ -817,78 +817,262 @@
 
   </div>
 
-  <!-- UBICACIÓN -->
-  <section class="section section-dark" id="ubicacion">
-    <div class="section-inner split">
-      <div class="split-text">
-        <p class="eyebrow">Cómo llegar</p>
-        <h2>Tu entorno de fin de semana</h2>
-        <p>A diferencia de un terreno en Guadalajara, aquí el trayecto es parte del descanso: entras por la carretera Morelia–Guadalajara y en minutos estás frente al lago.</p>
+<!-- ==========================================================
+     UBICACIÓN
+========================================================== -->
 
-        <ol class="route-list">
-          <li><span class="route-num">01</span> Entrada sobre la carretera Morelia–Guadalajara</li>
-          <li><span class="route-num">02</span> Zona turística de Tuxcueca</li>
-          <li><span class="route-num">03</span> A 90 minutos de Guadalajara</li>
-          <li><span class="route-num">04</span> A 70 minutos de Chapala</li>
-          <li><span class="route-num">05</span> Hospital Comunitario de Jocotepec</li>
-          <li><span class="route-num">06</span> A 15 minutos de San Luis Soyatlán</li>
-        </ol>
-      </div>
-      <div class="split-media">
-        <div class="img-ph" data-label="Mapa del entorno y accesos al desarrollo" style="--ar:4/5"></div>
-      </div>
+<section class="section ubicacion-section" id="ubicacion">
+
+  <!-- Fondo de hojas -->
+  <div class="ubicacion-leaves"></div>
+
+  <div class="ubicacion-inner">
+
+    <!-- TEXTO -->
+    <div class="ubicacion-text">
+
+      <p class="ubicacion-eyebrow">Cómo llegar</p>
+
+      <h2>TU ENTORNO DE<br>FIN DE SEMANA</h2>
+
+      <p class="ubicacion-intro">
+        Descubre nuestro desarrollo residencial en Tuxcueca,
+        Jalisco, a solo 90 minutos de Guadalajara.
+      </p>
+
+      <p class="ubicacion-description">
+        A diferencia de los <strong>terrenos en venta en Guadalajara</strong>,
+        aquí encuentras un refugio natural en la hermosa Ribera de
+        Chapala, estratégicamente ubicado para ofrecerte tranquilidad
+        absoluta, clima excepcional y una conexión inigualable con la
+        naturaleza y el estilo de vida campestre.
+      </p>
+
+
+      <!-- PUNTOS DE UBICACIÓN -->
+      <ol class="route-list">
+
+        <li>
+          <span class="route-num">01</span>
+          <span>Entrada sobre la carretera Morelia - Guadalajara</span>
+        </li>
+
+        <li>
+          <span class="route-num">04</span>
+          <span>A 70 minutos de Chapala</span>
+        </li>
+
+        <li>
+          <span class="route-num">02</span>
+          <span>Zona Turística de Tuxcueca</span>
+        </li>
+
+        <li>
+          <span class="route-num">05</span>
+          <span>Hospital Comunitario De Jocotepec</span>
+        </li>
+
+        <li>
+          <span class="route-num">03</span>
+          <span>A 90 minutos de Guadalajara</span>
+        </li>
+
+        <li>
+          <span class="route-num">06</span>
+          <span>A 15 minutos de San Luis Soyatlán</span>
+        </li>
+
+      </ol>
+
     </div>
-  </section>
 
-  <!-- CONTACTO -->
-  <section class="section section-contact" id="contacto">
-    <div class="img-ph contact-bg" data-label="Vista natural de Rancho La Cañada" style="--ar:16/9"></div>
-    <div class="section-inner contact-inner">
-      <div class="contact-copy">
-        <p class="eyebrow">Exclusividad y naturaleza</p>
-        <h2>Frente al Lago de Chapala</h2>
-        <p class="contact-price">Terrenos residenciales desde $1.5 MDP</p>
+
+    <!-- MAPA -->
+    <div class="ubicacion-map">
+
+      <img
+        src="/ubicacion/mapaRancho.webp"
+        alt="Mapa del entorno de Rancho La Cañada"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ==========================================================
+     CONTACTO FINAL
+========================================================== -->
+
+<section class="section section-contact" id="contacto">
+
+  <!-- IMAGEN DE FONDO -->
+  <div class="contact-bg">
+    <div class="contact-bg-overlay"></div>
+  </div>
+
+
+  <div class="section-inner contact-inner">
+
+    <!-- ======================================================
+         LADO IZQUIERDO
+    ======================================================= -->
+
+    <div class="contact-copy">
+
+      <p class="eyebrow">
+        Exclusividad y naturaleza
+      </p>
+
+      <h2>
+        Frente al Lago de Chapala
+      </h2>
+
+      <p class="contact-price">
+        Terrenos residenciales desde $1.5 MDP
+      </p>
+
+    </div>
+
+
+    <!-- ======================================================
+         FORMULARIO
+    ======================================================= -->
+
+    <form
+      class="contact-form"
+      id="contactForm"
+      novalidate
+    >
+
+      <h3>
+        Déjanos tus datos y un
+        <strong>asesor te contactará en breve</strong>
+      </h3>
+
+
+      <!-- NOMBRE -->
+
+      <div class="field">
+
+        <label for="nombre">
+          Nombre completo
+        </label>
+
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          required
+          autocomplete="name"
+          placeholder="Nombre*"
+        >
+
       </div>
 
-      <form class="contact-form" id="contactForm" novalidate>
-        <h3>Déjanos tus datos y un asesor te contactará en breve</h3>
 
-        <div class="field">
-          <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre" required autocomplete="name">
-        </div>
+      <!-- TELÉFONO -->
 
-        <div class="field-row">
-          <div class="field">
-            <label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" required autocomplete="tel" inputmode="tel">
-          </div>
-          <div class="field">
-            <label for="email">Correo</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
-          </div>
-        </div>
+      <div class="field">
 
-        <div class="field">
-          <label for="mensaje">Mensaje (opcional)</label>
-          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos qué te interesa: tamaño de lote, presupuesto, fecha de visita..."></textarea>
-        </div>
+        <label for="telefono">
+          Teléfono
+        </label>
 
-        <p class="form-error" id="formError" role="alert" hidden>Falta completar nombre, teléfono y correo.</p>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          required
+          autocomplete="tel"
+          inputmode="tel"
+          placeholder="Teléfono*"
+        >
 
-        <button type="submit" class="btn btn-primary btn-block">Enviar por WhatsApp</button>
-        <p class="form-hint">Se abrirá WhatsApp con tus datos listos para enviar a un asesor.</p>
-      </form>
-    </div>
-  </section>
+      </div>
 
-</main>
 
+      <!-- CORREO -->
+
+      <div class="field">
+
+        <label for="email">
+          Correo
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autocomplete="email"
+          placeholder="Correo*"
+        >
+
+      </div>
+
+
+      <!-- MENSAJE -->
+
+      <div class="field">
+
+        <label for="mensaje">
+          Mensaje
+        </label>
+
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          rows="4"
+          placeholder="Mensaje (Opcional)"
+        ></textarea>
+
+      </div>
+
+
+      <p
+        class="form-error"
+        id="formError"
+        role="alert"
+        hidden
+      >
+        Falta completar nombre, teléfono y correo.
+      </p>
+
+
+    <button
+  type="submit"
+  class="contact-submit"
+>
+  <span class="contact-submit-text">
+    ENVIAR FORMULARIO
+  </span>
+
+  <span class="contact-submit-arrow">
+    ↗
+  </span>
+</button>
+      <p class="form-hint">
+        Se abrirá WhatsApp con tus datos listos para enviar a un asesor.
+      </p>
+
+    </form>
+
+  </div>
+
+</section>
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="img-ph footer-logo-ph" data-label="Logo Rancho La Cañada" style="--ar:3/1"></div>
-      <p>Un desarrollo de Grupo Udai.</p>
+      <div class="footer-logo">
+  <img
+    src="./footer/logo.webp"
+    alt="Rancho La Cañada"
+  >
+</div>
+
+<p>Un desarrollo de Grupo Udai.</p>
+      
     </div>
 
     <div class="footer-col">
