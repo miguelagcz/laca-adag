@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rancho La Cañada | Terrenos frente al Lago de Chapala</title>
-  <meta name="description" content="Lotes residenciales campestres frente al Lago de Chapala en Tuxcueca, Jalisco. A 90 minutos de Guadalajara. Financiamiento hasta 96 meses.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rancho La Cañada | Terrenos frente al Lago de Chapala</title>
+<meta name="description" content="Lotes residenciales campestres frente al Lago de Chapala en Tuxcueca, Jalisco. A 90 minutos de Guadalajara. Financiamiento hasta 96 meses.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Saltar al contenido</a>
 
-<header class="site-header header-enter" id="siteHeader">
+<!-- ==========================================================
+     HEADER
+     ========================================================== -->
+<header class="site-header at-top" id="siteHeader">
   <div class="header-inner">
+
     <a href="#top" class="logo">
       <img src="/carrcucel/Logo.png" alt="Rancho La Cañada">
     </a>
+
     <hr class="header-rule">
 
     <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
@@ -30,34 +35,51 @@
         <li><a href="#lotes">Lotes</a></li>
         <li><a href="#amenidades">Amenidades</a></li>
         <li><a href="#ubicacion">Ubicación</a></li>
+        <li class="nav-cta-item">
+          <a href="#contacto" class="nav-cta-link">
+            Contactar a un asesor
+          </a>
+        </li>
       </ul>
     </nav>
 
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
+
   </div>
 </header>
 
+
+<div class="nav-overlay" id="navOverlay" hidden></div>
+
 <main id="main">
 
-  <!-- HERO -->
+  <!-- ==========================================================
+       HERO
+       ========================================================== -->
   <section class="hero" id="top">
+
     <div class="hero-bg hero-bg-current" id="heroBg"></div>
     <div class="hero-bg hero-bg-next" id="heroBgNext"></div>
 
     <div class="hero-content">
+
       <h1 class="hero-title">Exclusividad y naturaleza</h1>
 
-      <p class="hero-subtitle">Frente al <strong>LAGO DE CHAPALA</strong></p>
+      <p class="hero-subtitle">
+        Frente al <strong>LAGO DE CHAPALA</strong>
+      </p>
 
       <hr class="hero-rule">
 
-      <p class="hero-sub">Terrenos residenciales desde $1.5 MDP</p>
+      <p class="hero-sub">
+        Terrenos residenciales desde $1.5 MDP
+      </p>
 
       <div class="hero-actions">
         <a href="#contacto" class="btn btn-primary">
-          Contactar a un asesor <span class="btn-arrow" aria-hidden="true"></span>
+          Contactar a un asesor
         </a>
       </div>
 
@@ -82,15 +104,21 @@
       <button class="hero-arrow hero-arrow-next" aria-label="Siguiente imagen">
         <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
       </button>
+
     </div>
   </section>
 
-  <!-- EL DESARROLLO -->
+  <!-- ==========================================================
+       EL DESARROLLO
+       ========================================================== -->
   <section class="section section-light" id="desarrollo">
+
     <div class="section-inner split">
+
       <div class="split-text">
         <p class="eyebrow">El desarrollo</p>
         <h2>Rancho La Cañada</h2>
+
         <p>
           A diferencia de los terrenos en venta en Guadalajara, aquí
           encuentras un refugio natural en la hermosa Ribera de
@@ -108,49 +136,62 @@
           ofreciendo espacios únicos para la relajación, la
           convivencia familiar y la alta gastronomía.
         </p>
-        <a href="#contacto" class="text-link">
-          Contacta a un asesor <span class="btn-arrow" aria-hidden="true">↗</span>
-        </a>
+
+        <a href="#contacto" class="text-link">Contacta a un asesor</a>
       </div>
 
       <div class="split-media">
         <img src="desarrollo/rancho-canada.webp" alt="Casa club y alberca de Rancho La Cañada">
       </div>
+
     </div>
 
+  
     <div class="stat-row" id="statRow">
+
       <div class="stat">
         <span class="stat-num" data-target="500 a 850" data-suffix=" m²">0</span>
         <span class="stat-label">Superficie por lote residencial</span>
       </div>
+
       <div class="stat">
         <span class="stat-num" data-target="96" data-suffix=" meses">0</span>
         <span class="stat-label">De financiamiento directo</span>
       </div>
+
       <div class="stat">
         <span class="stat-num" data-target="70000" data-suffix=" m²">0</span>
         <span class="stat-label">De áreas verdes y amenidades</span>
       </div>
+
       <div class="stat">
         <span class="stat-num" data-target="4.5" data-suffix=" ha">0</span>
-        <span class="stat-label">Hectáreas de viñedos privados</span>
+        <span class="stat-label">Hectareas de Viñedos privados</span>
       </div>
+
       <div class="stat">
         <span class="stat-num" data-target="90" data-suffix=" min">0</span>
         <span class="stat-label">De Guadalajara</span>
       </div>
+
       <div class="stat">
         <span class="stat-num" data-target="100%" data-suffix=" min">0</span>
-        <span class="stat-label">Escrituración inmediata</span>
+        <span class="stat-label">Escruturacion inmediata</span>
       </div>
+
     </div>
   </section>
 
-  <!-- LA VID RITUAL SPA -->
+  <!-- ==========================================================
+       LA VID RITUAL SPA
+       ========================================================== -->
   <section class="section section-light" id="spa">
+
     <div class="section-inner split split-reverse">
+
       <div class="split-media">
         <div class="spa-carousel" id="spaCarousel">
+
           <div class="spa-slide spa-slide-current"></div>
           <div class="spa-slide spa-slide-next"></div>
 
@@ -161,15 +202,16 @@
             <span></span>
             <span></span>
           </div>
+
         </div>
       </div>
 
       <div class="split-text">
         <h2>La Vid Ritual Spa</h2>
+
         <p>
           La Vid Ritual Spa, una experiencia de bienestar de
-          <strong>GRUPO UDAI</strong>
-          dentro de Rancho La Cañada, con vista al
+          <strong>GRUPO UDAI</strong> dentro de Rancho La Cañada, con vista al
           Lago de Chapala en un entorno de lotes campestres en
           Tuxcueca, Jalisco.
         </p>
@@ -183,15 +225,23 @@
           minutos de Guadalajara y con la plusvalía en ascenso de
           la Ribera de Chapala.
         </p>
-        <p>Vive el bienestar campestre junto al lago.</p>
+        <p>
+          Vive el bienestar campestre junto al lago.
+        </p>
       </div>
+
     </div>
   </section>
 
-  <!-- MASTERPLAN -->
+  <!-- ==========================================================
+       MASTERPLAN
+       ========================================================== -->
   <section class="section section-light" id="masterplan">
+
     <div class="section-inner masterplan-layout">
+
       <div class="masterplan-copy">
+
         <p class="eyebrow">Distribución del desarrollo</p>
         <h2>Masterplan</h2>
 
@@ -209,11 +259,13 @@
         </p>
 
         <a href="#contacto" class="btn btn-primary">
-          CONTACTA A UN ASESOR <span class="btn-arrow" aria-hidden="true">↗</span>
+          Contacta a un asesor
         </a>
+
       </div>
 
       <div class="masterplan-wrap">
+
         <img class="masterplan-img" src="masterplan/mapa.webp" alt="Masterplan de Rancho La Cañada">
 
         <div class="masterplan-dots" id="masterplanDots">
@@ -224,52 +276,66 @@
           <span>05</span>
           <span>06</span>
         </div>
+
       </div>
+
     </div>
   </section>
 
-  <!-- LOTES -->
+  <!-- ==========================================================
+       LOTES
+       ========================================================== -->
   <section class="lots-section" id="lotes">
+
     <div class="lots-container">
 
+      <!-- Selector de lotes: el JS lee data-lot y llena el resto -->
       <div class="lots-selector" role="tablist">
+
         <button class="lot-tab is-active" type="button" data-lot="lot-20" role="tab" aria-selected="true">
           <span>Lote 20</span>
           <small>Manzana 16</small>
           <b>−</b>
         </button>
+
         <button class="lot-tab" type="button" data-lot="lot-3" role="tab" aria-selected="false">
           <span>Lote 3</span>
           <small>Manzana 05</small>
           <b>+</b>
         </button>
+
         <button class="lot-tab" type="button" data-lot="lot-13" role="tab" aria-selected="false">
           <span>Lote 13</span>
           <small>Manzana 07</small>
           <b>+</b>
         </button>
+
         <button class="lot-tab" type="button" data-lot="lot-5a" role="tab" aria-selected="false">
           <span>Lote 5A</span>
           <small>Manzana 05</small>
           <b>+</b>
         </button>
+
         <button class="lot-tab" type="button" data-lot="lot-4" role="tab" aria-selected="false">
           <span>Lote 4</span>
           <small>Manzana 07</small>
           <b>+</b>
         </button>
+
       </div>
 
-      <div class="lot-card" id="lot-card">
+     
+      <div class="lot-card">
 
-        <!-- Información -->
         <div class="lot-info">
+
           <div class="lot-heading">
             <h2 id="lot-name">Lote 20</h2>
             <h3 id="lot-block">Manzana 16</h3>
           </div>
 
           <div class="lot-features">
+
             <div class="lot-feature">
               <div class="feature-icon">▣</div>
               <div>
@@ -315,23 +381,24 @@
               <div class="feature-icon">≋</div>
               <div><strong id="lot-pool">Alberca</strong></div>
             </div>
+
           </div>
 
           <a href="#contacto" class="lot-quote-button">
             Cotizar
-            <span class="btn-arrow" aria-hidden="true">↗</span>
+            <span>↗</span>
           </a>
+
         </div>
 
-        <!-- Plano -->
         <div class="lot-plan">
           <div class="lot-plan-frame">
             <img id="lot-plan-image" src="images/lote-20.jpg" alt="Plano casa muestra Lote 20">
           </div>
         </div>
 
-        <!-- Fotografías -->
         <div class="lot-gallery">
+
           <div class="lot-gallery-item">
             <div class="lot-gallery-photo">
               <img id="lot-front-image" src="images/lote-20-frontal.jpg" alt="Vista frontal">
@@ -345,15 +412,21 @@
             </div>
             <span>Interior</span>
           </div>
+
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- EXPERIENCIA -->
+  <!-- ==========================================================
+       EXPERIENCIA
+       ========================================================== -->
   <section class="experiencia">
+
     <div class="experiencia-contenedor">
+
       <div class="experiencia-titulo">
         <h2>+12 AÑOS DE<br>EXPERIENCIA</h2>
       </div>
@@ -362,10 +435,13 @@
         <img src="./12años/12años.webp" alt="Rancho La Cañada">
         <img src="./12años/12añoss.webp" alt="Grupo UDAI" class="experiencia-logo">
       </div>
+
     </div>
   </section>
 
-  <!-- AMENIDADES -->
+  <!-- ==========================================================
+       AMENIDADES
+       ========================================================== -->
   <section class="section amenities-section" id="amenidades">
     <div class="amenities-inner">
 
@@ -373,30 +449,45 @@
       <div class="amenities-line"></div>
 
       <div class="amenities-grid">
+
         <div class="amenity-item">
           <div class="amenity-circle"><img src="/amenidades/circulo-a/1.webp" alt="Alberca"></div>
+          <span>Alberca</span>
         </div>
+
         <div class="amenity-item">
           <div class="amenity-circle"><img src="/amenidades/circulo-a/2.webp" alt="Spa"></div>
+          <span>Spa</span>
         </div>
+
         <div class="amenity-item">
           <div class="amenity-circle"><img src="/amenidades/circulo-a/3.webp" alt="Áreas de niños"></div>
+          <span>Áreas de niños</span>
         </div>
+
         <div class="amenity-item">
           <div class="amenity-circle"><img src="/amenidades/circulo-a/4.webp" alt="Mirador"></div>
+          <span>Mirador</span>
         </div>
+
         <div class="amenity-item">
           <div class="amenity-circle"><img src="/amenidades/circulo-a/5.webp" alt="Restaurante"></div>
+          <span>Restaurante</span>
         </div>
+
         <div class="amenity-item">
           <div class="amenity-circle"><img src="/amenidades/circulo-a/6.webp" alt="Caballerizas"></div>
+          <span>Caballerizas</span>
         </div>
+
         <div class="amenity-item">
           <div class="amenity-circle"><img src="/amenidades/circulo-a/7.webp" alt="Glamping"></div>
+          <span>Glamping</span>
         </div>
+
       </div>
 
-      <!-- Carrusel -->
+   <!-- Carrusel -->
       <div class="amenities-carousel">
         <h3>SPA LA VID</h3>
 
@@ -434,13 +525,17 @@
 
     </div>
   </section>
-
-  <!-- UBICACIÓN -->
+  <!-- ==========================================================
+       UBICACIÓN
+       ========================================================== -->
   <section class="section ubicacion-section" id="ubicacion">
+
     <div class="ubicacion-leaves"></div>
 
     <div class="ubicacion-inner">
+
       <div class="ubicacion-text">
+
         <p class="ubicacion-eyebrow">Cómo llegar</p>
         <h2>TU ENTORNO DE<br>FIN DE SEMANA</h2>
 
@@ -457,30 +552,35 @@
           naturaleza y el estilo de vida campestre.
         </p>
 
-        <!-- El orden está alternado para que la cuadrícula de 2 columnas se lea 01-02-03 / 04-05-06 -->
         <ol class="route-list">
           <li><span class="route-num">01</span><span>Entrada sobre la carretera Morelia - Guadalajara</span></li>
-          <li><span class="route-num">04</span><span>A 70 minutos de Chapala</span></li>
           <li><span class="route-num">02</span><span>Zona Turística de Tuxcueca</span></li>
-          <li><span class="route-num">05</span><span>Hospital Comunitario De Jocotepec</span></li>
           <li><span class="route-num">03</span><span>A 90 minutos de Guadalajara</span></li>
+          <li><span class="route-num">04</span><span>A 70 minutos de Chapala</span></li>
+          <li><span class="route-num">05</span><span>Hospital Comunitario De Jocotepec</span></li>
           <li><span class="route-num">06</span><span>A 15 minutos de San Luis Soyatlán</span></li>
         </ol>
+
       </div>
 
       <div class="ubicacion-map">
         <img src="/ubicacion/mapaRancho.webp" alt="Mapa del entorno de Rancho La Cañada">
       </div>
+
     </div>
   </section>
 
-  <!-- CONTACTO -->
+  <!-- ==========================================================
+       CONTACTO FINAL
+       ========================================================== -->
   <section class="section section-contact" id="contacto">
+
     <div class="contact-bg">
       <div class="contact-bg-overlay"></div>
     </div>
 
     <div class="section-inner contact-inner">
+
       <div class="contact-copy">
         <p class="eyebrow">Exclusividad y naturaleza</p>
         <h2>Frente al Lago de Chapala</h2>
@@ -488,6 +588,7 @@
       </div>
 
       <form class="contact-form" id="contactForm" novalidate>
+
         <h3>
           Déjanos tus datos y un
           <strong>asesor te contactará en breve</strong>
@@ -519,20 +620,27 @@
 
         <button type="submit" class="contact-submit">
           <span class="contact-submit-text">ENVIAR FORMULARIO</span>
-          <span class="contact-submit-arrow" aria-hidden="true">↗</span>
+          <span class="contact-submit-arrow">↗</span>
         </button>
 
         <p class="form-hint">
           Se abrirá WhatsApp con tus datos listos para enviar a un asesor.
         </p>
+
       </form>
+
     </div>
   </section>
 
 </main>
 
+<!-- ==========================================================
+     FOOTER
+     ========================================================== -->
 <footer class="site-footer">
+
   <div class="footer-inner">
+
     <div class="footer-brand">
       <div class="footer-logo">
         <img src="./footer/logo.webp" alt="Rancho La Cañada">
@@ -559,12 +667,14 @@
       <a href="mailto:contacto@grupoudai.com">contacto@grupoudai.com</a>
       <a href="https://wa.me/523310139099" target="_blank" rel="noopener">+52 33 1013 9099</a>
     </div>
+
   </div>
 
   <div class="footer-bottom">
     <p>© <span id="year"></span> Rancho La Cañada. Todos los derechos reservados.</p>
     <a href="#">Política de privacidad</a>
   </div>
+
 </footer>
 
 <a class="whatsapp-fab" href="https://wa.me/523310139099?text=%C2%A1Hola!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20de%20Rancho%20La%20Ca%C3%B1ada." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">

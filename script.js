@@ -1,19 +1,5 @@
 /* ==========================================================
-   RANCHO LA CAÑADA — scripts
-   ----------------------------------------------------------
-   ÍNDICE
-   01. Utilidades
-   02. Datos (imágenes y lotes)
-   03. Header: animación de carga, ocultar al bajar, estado "arriba"
-   04. Contadores de "El desarrollo"
-   05. Hero: carrusel de fondo
-   06. Spa: carrusel de fondo
-   07. Lotes: cambio de información e imágenes
-   08. Amenidades: carrusel con crossfade
-
-   Todo vive dentro de una función para no crear variables
-   globales, y cada módulo se apaga solo si su HTML no existe
-   (antes, si faltaba #siteHeader, dejaban de correr los contadores).
+   RANCHO LA CAÑADA 
    ========================================================== */
 (function () {
   "use strict";
@@ -151,7 +137,7 @@
      03. HEADER
      ========================================================== */
 
-  /* La línea bajo el logo se dibuja cuando termina de cargar la página */
+
   function initHeaderIntro() {
     var rule = document.querySelector(".header-rule");
     if (!rule) return;
@@ -170,13 +156,13 @@
     }
   }
 
-  /* Baja → se esconde. Sube → aparece. Arriba del todo → clase .at-top (transparente) */
+
   function initHeader() {
     var header = document.getElementById("siteHeader");
     if (!header) return;
 
-    var HIDE_AFTER = 100;   // px: antes de esto el header nunca se esconde
-    var TOP_LIMIT = 10;     // px: por debajo se considera "arriba del todo"
+    var HIDE_AFTER = 100;   
+    var TOP_LIMIT = 10;     
     var lastY = window.scrollY;
     var ticking = false;
 
@@ -197,7 +183,6 @@
       ticking = false;
     }
 
-    /* Un solo listener, limitado a un cuadro de animación */
     window.addEventListener("scroll", function () {
       if (ticking) return;
       ticking = true;
@@ -209,8 +194,83 @@
 
 
   /* ==========================================================
-     04. CONTADORES — EL DESARROLLO
-     Lee data-target, data-prefix y data-suffix de cada .stat-num
+     04. MENÚ MÓVIL
+     ========================================================== */
+  function initMobileMenu() {
+    var toggle = document.getElementById("navToggle");
+    var nav = document.getElementById("mainNav");
+    var overlay = document.getElementById("navOverlay");
+    if (!toggle || !nav) return;
+
+    var DESKTOP_BREAKPOINT = 820; // debe coincidir con el @media de style.css
+    var links = nav.querySelectorAll("a");
+    var overlayHideTimer = null;
+
+    function isOpen() {
+      return nav.classList.contains("nav-open");
+    }
+
+    function openMenu() {
+      nav.classList.add("nav-open");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Cerrar menú");
+      document.body.classList.add("nav-locked");
+
+      if (overlay) {
+        clearTimeout(overlayHideTimer);
+        overlay.hidden = false;
+       
+        requestAnimationFrame(function () {
+          overlay.classList.add("is-visible");
+        });
+      }
+    }
+
+    function closeMenu() {
+      if (!isOpen()) return;
+
+      nav.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Abrir menú");
+      document.body.classList.remove("nav-locked");
+
+      if (overlay) {
+        overlay.classList.remove("is-visible");
+        clearTimeout(overlayHideTimer);
+        overlayHideTimer = setTimeout(function () { overlay.hidden = true; }, 350);
+      }
+    }
+
+    function toggleMenu() {
+      if (isOpen()) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    toggle.addEventListener("click", toggleMenu);
+
+    if (overlay) overlay.addEventListener("click", closeMenu);
+
+    links.forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && isOpen()) closeMenu();
+    });
+
+    /* Si el usuario gira el celular o cambia de ventana a un ancho de
+       escritorio con el menú abierto, se cierra para no dejarlo "atorado" */
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > DESKTOP_BREAKPOINT && isOpen()) closeMenu();
+    });
+  }
+
+
+  /* ==========================================================
+     05. CONTADORES 
      ========================================================== */
   function initCounters() {
     var row = document.getElementById("statRow");
@@ -252,7 +312,7 @@
       counters.forEach(animate);
     }
 
-    /* Navegadores sin IntersectionObserver: se animan de inmediato */
+   
     if (!("IntersectionObserver" in window)) {
       runAll();
       return;
@@ -270,9 +330,7 @@
 
 
   /* ==========================================================
-     05. HERO — carrusel de fondo
-     #heroBg (imagen actual) + #heroBgNext (la que entra).
-     El CSS hace el fundido con la clase .is-transitioning.
+     06. HERO 
      ========================================================== */
   function initHeroCarousel() {
     var bg = document.getElementById("heroBg");
@@ -341,8 +399,7 @@
 
 
   /* ==========================================================
-     06. SPA — carrusel de fondo
-     .spa-slide-current (actual) + .spa-slide-next (entra por encima)
+     07. SPA — carrusel de fondo
      ========================================================== */
   function initSpaCarousel() {
     var current = document.querySelector("#spa .spa-slide-current");
@@ -383,8 +440,7 @@
 
 
   /* ==========================================================
-     07. LOTES
-     Botones .lot-tab (data-lot="lot-20"…) → cambian textos e imágenes
+     08. LOTES
      ========================================================== */
   function initLots() {
     var buttons = document.querySelectorAll(".lot-tab");
@@ -399,7 +455,7 @@
         return;
       }
 
-      /* Token: si el usuario cambia de lote muy rápido, solo cuenta el último clic */
+     
       var token = String((Number(img.dataset.swap) || 0) + 1);
       img.dataset.swap = token;
 
@@ -448,17 +504,14 @@
       button.addEventListener("click", function () { changeLot(button.dataset.lot); });
     });
 
-    /* Lote inicial: el botón que venga con .is-active en el HTML */
+   
     var initial = document.querySelector(".lot-tab.is-active");
     if (initial) changeLot(initial.dataset.lot);
   }
 
 
   /* ==========================================================
-     08. AMENIDADES — carrusel con crossfade
-     Hay 3 .carousel-slide (izquierda, centro, derecha). Cada uno
-     tiene su <img> y, al cambiar, se crea una segunda <img>
-     (.carousel-crossfade-img) que aparece por encima.
+     09. AMENIDADES 
      ========================================================== */
   function initAmenitiesCarousel() {
     var root = document.querySelector(".amenities-carousel");
@@ -469,13 +522,12 @@
     var prevBtn = root.querySelector(".carousel-btn-prev");
     var nextBtn = root.querySelector(".carousel-btn-next");
 
-    var FADE_MS = 800;        // un poco más que la transición del CSS (.75s)
+    var FADE_MS = 800;        
     var AUTOPLAY_MS = 9000;
     var index = 0;
     var timer = null;
 
-    /* Cuando termina el fundido, la <img> original toma la nueva foto SIN
-       transición (si no, se ve un parpadeo al cruzarse dos opacidades). */
+   
     function commit(img, overlay, src) {
       img.style.transition = "none";
       overlay.style.transition = "none";
@@ -484,7 +536,7 @@
       img.classList.remove("carousel-crossfade-hide");
       overlay.classList.remove("carousel-crossfade-show");
 
-      void img.offsetWidth;   // fuerza a aplicar los cambios antes de reactivar transiciones
+      void img.offsetWidth;  
 
       img.style.transition = "";
       overlay.style.transition = "";
@@ -502,14 +554,13 @@
         slide.appendChild(overlay);
       }
 
-      /* Token: si llega otro cambio antes de terminar, se ignora el anterior */
       var token = String((Number(slide.dataset.fade) || 0) + 1);
       slide.dataset.fade = token;
 
       overlay.classList.remove("carousel-crossfade-show");
       img.classList.remove("carousel-crossfade-hide");
 
-      /* Se espera a que la nueva imagen cargue para no mostrar un hueco */
+    
       overlay.onload = function () {
         if (slide.dataset.fade !== token) return;
 
@@ -581,6 +632,7 @@
   ready(function () {
     initHeaderIntro();
     initHeader();
+    initMobileMenu();
     initCounters();
     initHeroCarousel();
     initSpaCarousel();

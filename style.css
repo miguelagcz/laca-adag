@@ -1,31 +1,4 @@
-/* ==========================================================
-   RANCHO LA CAÑADA — hoja de estilos
-   ----------------------------------------------------------
-   ÍNDICE
-   01. Variables y reset
-   02. Tipografía base y utilidades
-   03. Botones y enlaces
-   04. Header y navegación
-   05. Hero
-   06. Secciones en dos columnas (.split)
-   07. El desarrollo  (#desarrollo)
-   08. Masterplan     (#masterplan)
-   09. La Vid Ritual Spa (#spa)
-   10. Lotes
-   11. Experiencia
-   12. Amenidades (grid, carrusel, botón de contacto)
-   13. Ubicación
-   14. Contacto (formulario)
-   15. Footer
-   16. WhatsApp y scroll-reveal
-
-   REGLA DE ORDEN: cada sección lleva sus @media justo debajo
-   de sus reglas base. Si un @media va antes que la regla que
-   modifica, la pierde (misma especificidad = gana la última).
-   ========================================================== */
-
-
-/* ==========================================================
+/* ==========================================================/* ==========================================================
    01. VARIABLES Y RESET
    ========================================================== */
 :root{
@@ -60,8 +33,11 @@
   }
 }
 
+html{ max-width:100%; overflow-x:hidden; }
 body{
   margin:0;
+  max-width:100%;
+  overflow-x:hidden;  /* red de seguridad: nada debe abrir scroll lateral en ningún ancho */
   font-family:var(--font-body);
   color:var(--ink);
   background:var(--stone);
@@ -69,10 +45,15 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
+
+body.nav-locked{
+  overflow:hidden;
+  height:100vh;
+}
+
 img{ max-width:100%; display:block; }
 
-/* Imágenes dentro de #top (portada): 85% de ancho y centradas.
-   Va después de "img" para que se lea como excepción. */
+/* Imágenes. */
 #top img{ max-width:85%; margin:0 auto; }
 
 
@@ -100,9 +81,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .skip-link:focus{ left:1rem; top:1rem; }
 
-/* Placeholders de imagen: cada uno define su proporción con --ar
-   (ej. 4/3, 16/9). Al poner una <img> real usa .img-real con el
-   mismo --ar y el encuadre no se deforma. */
+
 .img-ph, .img-real{
   width:100%;
   aspect-ratio:var(--ar, 4/3);
@@ -174,12 +153,14 @@ a{ color:inherit; text-decoration:none; }
 .text-link-light{ color:#C9A24A; }
 
 
+.btn-arrow{ display:inline-block; margin-left:.5em; }
+
+
+.nav-cta-link{ display:none; }
+
+
 /* ==========================================================
-   04. HEADER Y NAVEGACIÓN
-   Estados que controla el JS:
-   .at-top        → scroll = 0 (header transparente)
-   .is-scrolled   → ya se hizo scroll (header compacto)
-   .header-hidden → header escondido hacia arriba
+   HEADER Y NAVEGACIÓN
    ========================================================== */
 .site-header{
   position:fixed; top:0; left:0; z-index:100;
@@ -199,12 +180,6 @@ a{ color:inherit; text-decoration:none; }
   -webkit-backdrop-filter:blur(16px) saturate(140%);
   box-shadow:0 8px 30px rgba(0,0,0,.15);
 }
-/* Compacto */
-.site-header.is-scrolled{ border-bottom-color:rgba(255,255,255,.08); }
-.site-header.is-scrolled .header-inner{ padding-top:.55rem; padding-bottom:.55rem; }
-.site-header.is-scrolled .header-rule{ opacity:.12; }
-
-/* Arriba del todo: transparente (va después de los demás estados) */
 .site-header.at-top{
   background:transparent;
   backdrop-filter:none;
@@ -213,7 +188,7 @@ a{ color:inherit; text-decoration:none; }
   border-color:transparent;
 }
 
-/* Franja invisible arriba: al pasar el mouse vuelve a mostrar el header */
+
 .header-hover-trigger{
   position:fixed; top:0; left:0; right:0; z-index:99;
   height:22px;
@@ -225,7 +200,6 @@ a{ color:inherit; text-decoration:none; }
   padding:1rem var(--gap);
   display:flex; flex-direction:column; align-items:center;
   gap:1rem;
-  transition:padding .35s var(--ease);
 }
 
 /* Logo */
@@ -302,48 +276,131 @@ body.page-loaded .header-rule.line-finished{
 .main-nav a:not(.btn):hover{ opacity:1; text-shadow:0 0 10px rgba(255,255,255,.25); }
 .main-nav a:not(.btn):hover::before{ opacity:1; transform:scale(1); }
 .main-nav a:not(.btn):hover::after{ opacity:1; }
+.main-nav a:not(.btn):focus-visible{
+  opacity:1;
+  outline:2px solid rgba(255,255,255,.65);
+  outline-offset:3px;
+  border-radius:6px;
+}
 
-/* Botón hamburguesa (solo móvil) */
+
 .nav-toggle{
   position:absolute; right:var(--gap); top:50%;
   transform:translateY(-50%);
   display:none;
   flex-direction:column; align-items:center; justify-content:center; gap:5px;
-  width:36px; height:36px;
-  background:none; border:none; cursor:pointer;
+  width:42px; height:42px;
+  color:#fff;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:50%;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:background .3s ease, border-color .3s ease, transform .3s var(--ease);
 }
+.nav-toggle:hover{ background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.4); }
+.nav-toggle:focus-visible{ outline:2px solid rgba(255,255,255,.7); outline-offset:3px; }
 .nav-toggle span{
-  width:20px; height:2px;
+  width:18px; height:2px;
   background:currentColor;
+  border-radius:2px;
   transition:transform .3s var(--ease), opacity .2s var(--ease);
 }
+.nav-toggle[aria-expanded="true"]{ background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.45); }
 .nav-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
-/* Móvil: el menú se vuelve un panel lateral */
+
+.nav-overlay{
+  position:fixed; inset:0; z-index:95;
+  background:rgba(8,18,14,.55);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+}
+.nav-overlay.is-visible{ opacity:1; pointer-events:auto; }
+@media (min-width:821px){
+  .nav-overlay{ display:none; }  
+}
+
+
 @media (max-width:820px){
-  .header-hover-trigger{ display:none; }  /* en móvil no hay hover real */
+  .header-hover-trigger{ display:none; }  
 
   .main-nav{
     position:fixed; inset:0 0 0 auto;
-    width:min(78vw, 340px); height:100vh;
-    flex-direction:column; align-items:flex-start; justify-content:flex-start;
-    padding:5.5rem 2rem 2rem;
-    background:var(--stone);
-    color:var(--ink);
-    box-shadow:-10px 0 30px rgba(0,0,0,.15);
+    width:min(84vw, 360px);
+    height:100vh; height:100dvh;
+    flex-direction:column; align-items:stretch; justify-content:flex-start;
+    padding:6rem 1.75rem 2rem;
+    overflow-y:auto;
+    color:#fff;
+    background:linear-gradient(165deg, rgba(6,78,59,.95) 0%, rgba(6,78,59,.88) 55%, rgba(4,58,44,.94) 100%);
+    border-left:1px solid rgba(255,255,255,.16);
+    box-shadow:-20px 0 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.10);
+    backdrop-filter:blur(22px) saturate(140%);
+    -webkit-backdrop-filter:blur(22px) saturate(140%);
     transform:translateX(100%);
-    transition:transform .35s var(--ease);
+    transition:transform .4s var(--ease);
   }
   .main-nav.nav-open{ transform:translateX(0); }
-  .main-nav ul{ flex-direction:column; gap:1.4rem; }
-  /* CORRECCIÓN: los links eran blancos sobre el panel claro (no se veían) */
-  .main-nav a:not(.btn){ color:var(--ink); font-size:1.05rem; }
-  .main-nav a:not(.btn)::after{ background:var(--wine); }
-  .nav-cta{ margin-top:2rem; }
-  .site-header:not(.is-scrolled) .nav-cta.btn-primary{ background:var(--wine); border-color:var(--wine); }
+
+  .main-nav ul{
+    flex-direction:column; align-items:stretch;
+    gap:0;
+    width:100%;
+  }
+  .main-nav ul li{ border-bottom:1px solid rgba(255,255,255,.10); }
+  .main-nav ul li:first-child{ border-top:1px solid rgba(255,255,255,.10); }
+
+  
+  .main-nav a:not(.btn){
+    display:block;
+    width:100%;
+    padding:.95rem 2.2rem;
+    color:#fff;
+    font-size:.92rem; font-weight:600;
+    letter-spacing:.06em;
+    opacity:.86;
+  }
+  .main-nav a:not(.btn)::before{ inset:0; border-radius:8px; }
+  .main-nav a:not(.btn)::after{ display:none; }
+  .main-nav a:not(.btn):hover,
+  .main-nav a:not(.btn):focus-visible{ opacity:1; padding-left:.6rem; }
+
+  .nav-cta-item{ border-bottom:none !important; margin-top:1.5rem; }
+  .nav-cta-link{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:100%;
+    padding:1em 1.4em;
+    color:#fff;
+    font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:999px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 8px 25px rgba(0,0,0,.16);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    opacity:1;
+    transition:background .3s ease, border-color .3s ease, transform .3s var(--ease);
+  }
+  .nav-cta-link:hover,
+  .nav-cta-link:focus-visible{
+    background:rgba(47,125,73,.55);
+    border-color:rgba(120,190,135,.75);
+    transform:translateY(-2px);
+    padding-left:1.4em;  /* anula el corrimiento que aplican los otros links */
+  }
+
   .nav-toggle{ display:flex; }
+}
+
+@media (max-width:400px){
+  .main-nav{ width:100vw; }
 }
 
 
@@ -359,7 +416,7 @@ body.page-loaded .header-rule.line-finished{
   text-align:center;
 }
 
-/* Fondo con cambio de imagen (el JS alterna las clases) */
+
 .hero-bg{
   position:absolute; inset:0;
   width:100%; height:100%;
@@ -371,10 +428,8 @@ body.page-loaded .header-rule.line-finished{
   will-change:opacity, transform;
   transition:opacity 1.2s cubic-bezier(.22,1,.36,1), transform 7s cubic-bezier(.22,1,.36,1);
 }
-.hero-bg-current{ opacity:1; transform:scale(1); }
 .hero-bg-next{ opacity:0; transform:scale(1.015); }
 .hero-bg.is-transitioning.hero-bg-next{ opacity:1; transform:scale(1); }
-.hero-bg.is-changing{ opacity:.25; transform:scale(1.025); }
 /* Velo oscuro para que el texto se lea */
 .hero-bg::after{
   content:"";
@@ -562,6 +617,17 @@ body.page-loaded .header-rule.line-finished{
   .hero-actions{ flex-direction:column; align-items:stretch; }
 }
 
+@media (max-height:480px) and (orientation:landscape){
+  .hero{ min-height:100svh; }
+  .hero-content{ transform:none; padding-top:3.5rem; padding-bottom:1rem; }
+  .hero-partner{ margin-top:.9rem; }
+  .hero-dots{ margin-top:.7rem; }
+}
+
+@media (max-width:360px){
+  .hero-actions .btn-primary{ min-width:0; width:100%; padding:1em 1.5em; }
+}
+
 
 /* ==========================================================
    06. SECCIONES EN DOS COLUMNAS (.split)
@@ -579,7 +645,21 @@ body.page-loaded .header-rule.line-finished{
 @media (max-width:820px){
   .split{ grid-template-columns:1fr; }
   .split-reverse{ direction:ltr; }
-  .split-media{ order:-1; }  /* la imagen va arriba del texto */
+  .split-media{ order:-1; }  
+}
+
+
+.split-media > img{
+  width:100%;
+  aspect-ratio:4 / 3;
+  object-fit:cover;
+  border-radius:var(--radius);
+}
+@media (max-width:820px){
+  .split-media > img{ aspect-ratio:16 / 10; }
+}
+@media (max-width:520px){
+  .split-media > img{ aspect-ratio:4 / 3; }
 }
 
 
@@ -600,7 +680,7 @@ body.page-loaded .header-rule.line-finished{
 #desarrollo strong{ color:#fff; }
 #desarrollo .eyebrow{ color:rgba(255,255,255,.80); }
 
-/* Botón de vidrio + flecha separada que se une al hacer hover */
+/* Botón de vidrio con flecha ↗ en línea (mismo patrón que .lot-quote-button) */
 #desarrollo .text-link{
   position:relative;
   display:inline-flex; align-items:center;
@@ -618,16 +698,19 @@ body.page-loaded .header-rule.line-finished{
   transition:background .35s ease, border-color .35s ease, border-radius .35s ease, padding-right .35s ease, transform .35s ease;
 }
 #desarrollo .text-link::after{
-  content:"";
   position:absolute; left:calc(100% + 14px); top:-1px; z-index:20;
   width:54px; height:54px;
-  background:rgba(255,255,255,.045) url("../desarrollo/arrow-up.svg") center / 16px 16px no-repeat;
+  display:flex; align-items:center; justify-content:center;
+  content:"\2197";  /* ↗ como texto, no imagen */
+  color:#fff;
+  font-family:Arial, sans-serif; font-size:1.85rem; font-weight:800; line-height:1;
+  background:rgba(255,255,255,.045);
   border:1px solid rgba(255,255,255,.32);
   border-radius:7px;
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 8px 25px rgba(0,0,0,.18);
-  transition:left .35s ease, width .35s ease, border-radius .35s ease, background .35s ease, border-color .35s ease, box-shadow .35s ease;
+  transition:left .35s ease, width .35s ease, border-radius .35s ease, background .35s ease, border-color .35s ease, font-size .35s ease, box-shadow .35s ease;
 }
 #desarrollo .text-link:hover{
   background:var(--green);
@@ -640,6 +723,7 @@ body.page-loaded .header-rule.line-finished{
 #desarrollo .text-link:hover::after{
   left:calc(100% - 1px);
   width:56px;
+  font-size:1.95rem;
   background-color:var(--green);
   border-color:rgba(255,255,255,.50);
   border-left-width:0;
@@ -713,7 +797,7 @@ body.page-loaded .header-rule.line-finished{
   color:var(--green);
   background:#f3f5f2;
 }
-#masterplan > .section-inner:first-child{
+#masterplan .masterplan-layout{
   width:min(var(--max-w), calc(100% - 2 * var(--gap)));
   min-height:520px;
   margin:0 auto;
@@ -721,10 +805,6 @@ body.page-loaded .header-rule.line-finished{
   grid-template-columns:minmax(0, .82fr) minmax(0, 1.18fr);
   align-items:center;
   gap:clamp(2rem, 5vw, 5rem);
-}
-#masterplan > .section-inner:last-child{
-  width:min(var(--max-w), calc(100% - 2 * var(--gap)));
-  margin:0 auto;
 }
 
 /* Texto */
@@ -736,13 +816,9 @@ body.page-loaded .header-rule.line-finished{
   color:rgba(28,42,34,.68);
   line-height:1.65;
 }
-#masterplan > .section-inner:first-child .btn{ margin-top:.75rem; }
+#masterplan .masterplan-copy .btn{ margin-top:.75rem; }
 
-/* Ficha antigua: sigue en el HTML pero oculta (ver notas: conviene borrarla del HTML) */
-#masterplan .spec-title,
-#masterplan .spec-sheet{ display:none; }
 
-/* Imagen (115% de ancho, subida un poco) y puntos numerados */
 #masterplan .masterplan-wrap{
   position:relative;
   width:100%; max-width:900px;
@@ -779,7 +855,7 @@ body.page-loaded .header-rule.line-finished{
 }
 #masterplan .masterplan-dots span.is-active{ background:var(--green); transform:scale(1.08); }
 
-/* Posición de cada punto sobre el plano */
+
 #masterplan .masterplan-dots span:nth-child(1){ top:36%; right:5%; }
 #masterplan .masterplan-dots span:nth-child(2){ top:45%; right:27%; }
 #masterplan .masterplan-dots span:nth-child(3){ top:34%; left:25%; }
@@ -787,7 +863,7 @@ body.page-loaded .header-rule.line-finished{
 #masterplan .masterplan-dots span:nth-child(5){ top:53%; left:39%; }
 #masterplan .masterplan-dots span:nth-child(6){ bottom:11%; left:35%; }
 
-/* Botón verde vidrio + flecha que se une en hover (mismo patrón que #desarrollo) */
+
 #masterplan .btn-primary{
   position:relative;
   display:inline-flex; align-items:center; justify-content:center;
@@ -804,16 +880,19 @@ body.page-loaded .header-rule.line-finished{
   transition:background .35s ease, border-color .35s ease, border-radius .35s ease, padding-right .35s ease, transform .35s ease, box-shadow .35s ease;
 }
 #masterplan .btn-primary::after{
-  content:"";
   position:absolute; left:calc(100% + 14px); top:-1px;
   width:54px; height:54px;
-  background:rgba(6,78,59,.55) url("../desarrollo/arrow-up.svg") center / 16px 16px no-repeat;
+  display:flex; align-items:center; justify-content:center;
+  content:"\2197";  /* ↗ */
+  color:#fff;
+  font-family:Arial, sans-serif; font-size:1.85rem; font-weight:800; line-height:1;
+  background:rgba(6,78,59,.55);
   border:1px solid rgba(6,78,59,.45);
   border-radius:12px;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 8px 25px rgba(6,78,59,.14);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
-  transition:left .35s ease, width .35s ease, border-radius .35s ease, background .35s ease, border-color .35s ease, box-shadow .35s ease;
+  transition:left .35s ease, width .35s ease, border-radius .35s ease, background .35s ease, border-color .35s ease, font-size .35s ease, box-shadow .35s ease;
 }
 #masterplan .btn-primary:hover{
   background:var(--green);
@@ -827,6 +906,7 @@ body.page-loaded .header-rule.line-finished{
 #masterplan .btn-primary:hover::after{
   left:calc(100% - 1px);
   width:56px;
+  font-size:1.95rem;
   background-color:var(--green);
   border-color:rgba(6,78,59,.80);
   border-left-width:0;
@@ -837,19 +917,19 @@ body.page-loaded .header-rule.line-finished{
 }
 
 @media (max-width:900px){
-  #masterplan > .section-inner:first-child{
+  #masterplan .masterplan-layout{
     min-height:auto;
     grid-template-columns:1fr;
     gap:2.5rem;
     text-align:center;
   }
-  #masterplan > .section-inner:first-child .btn{ margin-top:.5rem; }
+  #masterplan .masterplan-copy .btn{ margin-top:.5rem; }
   #masterplan .section-lead{ margin-left:auto; margin-right:auto; }
   #masterplan .masterplan-wrap{ margin-top:1rem; }
   #masterplan .masterplan-img{ max-width:700px; }
 }
 @media (max-width:600px){
-  #masterplan > .section-inner:first-child{ width:calc(100% - 2rem); }
+  #masterplan .masterplan-layout{ width:calc(100% - 2rem); }
   #masterplan .masterplan-img{ aspect-ratio:1 / 1; }
   #masterplan .masterplan-dots span{ width:29px; height:29px; font-size:.5rem; }
   #masterplan .masterplan-dots span:nth-child(1){ top:35%; right:1%; }
@@ -863,8 +943,6 @@ body.page-loaded .header-rule.line-finished{
 
 /* ==========================================================
    09. LA VID RITUAL SPA  (#spa)
-   El ID basta para ganar a .split y .split-reverse; ya no
-   hacen falta los !important.
    ========================================================== */
 #spa{
   color:var(--green);
@@ -882,7 +960,7 @@ body.page-loaded .header-rule.line-finished{
 #spa .section-inner.split > .split-media{ grid-column:1; grid-row:1; width:100%; overflow:hidden; }
 #spa .section-inner.split > .split-text{ grid-column:2; grid-row:1; width:100%; }
 
-/* Placeholder de imagen (solo si aún se usa .img-ph aquí; el carrusel de abajo ya tiene su propio tamaño) */
+
 #spa .split-media .img-ph{
   width:100%;
   min-height:500px;
@@ -968,8 +1046,6 @@ body.page-loaded .header-rule.line-finished{
 
 /* ==========================================================
    10. LOTES
-   Estructura: .lots-selector (pestañas) + .lot-card
-   (info | plano | fotos). Verde propio de la sección: #214e42.
    ========================================================== */
 .lots-section{
   width:100%;
@@ -1009,7 +1085,7 @@ body.page-loaded .header-rule.line-finished{
 .lot-tab.is-active{ color:#fff; background:transparent; border-color:#e9efeb; }
 .lot-tab.is-active b{ color:#fff; }
 
-/* Tarjeta principal: información | plano | fotos */
+
 .lot-card{
   width:100%; min-height:470px;
   padding:25px 0 20px;
@@ -1090,6 +1166,13 @@ body.page-loaded .header-rule.line-finished{
   border-bottom:1px solid #214e42;
 }
 
+
+@media (max-width:900px){
+  .lots-selector{ display:flex; overflow-x:auto; scrollbar-width:none; padding:7px; gap:6px; }
+  .lots-selector::-webkit-scrollbar{ display:none; }
+  .lot-tab{ flex:0 0 150px; }
+}
+
 @media (max-width:950px){
   .lots-container{ width:min(900px, calc(100% - 35px)); }
   .lot-card{ grid-template-columns:1fr 1.2fr; gap:30px; padding:30px 0; }
@@ -1155,6 +1238,19 @@ body.page-loaded .header-rule.line-finished{
 }
 .experiencia-foto{ position:relative; height:300px; overflow:hidden; }
 .experiencia-foto > img:first-child{ width:100%; height:100%; display:block; object-fit:cover; }
+
+@media (max-width:700px){
+  .experiencia-contenedor{ grid-template-columns:1fr; }
+  .experiencia-titulo{ padding:2rem 1.25rem; text-align:center; }
+  .experiencia-titulo h2{ font-size:26px; }
+  .experiencia-foto{ height:220px; }
+  .experiencia-logo{ width:170px !important; right:6%; }
+}
+@media (max-width:400px){
+  .experiencia-titulo h2{ font-size:22px; }
+  .experiencia-foto{ height:190px; }
+  .experiencia-logo{ width:140px !important; }
+}
 .experiencia-logo{
   position:absolute; right:10%; top:50%;
   width:250px; height:auto;
@@ -1165,9 +1261,6 @@ body.page-loaded .header-rule.line-finished{
 
 /* ==========================================================
    12. AMENIDADES
-   12a. Grid de iconos (4 arriba + 3 abajo, sobre 12 columnas)
-   12b. Carrusel de fotos
-   12c. Botón de contacto
    ========================================================== */
 .amenities-section{
   position:relative;
@@ -1231,7 +1324,7 @@ body.page-loaded .header-rule.line-finished{
   width:155px; height:155px; flex-shrink:0;
   display:flex; align-items:center; justify-content:center;
   overflow:hidden;
-  /* Anula el estilo de .img-ph por si el elemento lo trae: aquí no debe haber círculo extra */
+  
   background:transparent;
   border:none;
   border-radius:0;
@@ -1246,7 +1339,7 @@ body.page-loaded .header-rule.line-finished{
   object-fit:contain; object-position:center;
   transition:none;
 }
-.amenity-item:nth-child(7) img{ transform:scale(.8); }  /* el icono de glamping se ve grande: se reduce */
+.amenity-item:nth-child(7) img{ transform:scale(.8); }  
 .amenity-item span{
   display:block;
   margin-top:14px;
@@ -1269,11 +1362,11 @@ body.page-loaded .header-rule.line-finished{
     grid-template-columns:repeat(2, 1fr);
     column-gap:10px; row-gap:38px;
   }
-  .amenity-item:nth-child(n){ grid-column:auto; }  /* anula la distribución de escritorio */
+  .amenity-item:nth-child(n){ grid-column:auto; }  
   .amenity-circle{ width:105px; height:105px; }
   .amenity-item span{ margin-top:11px; font-size:10px; letter-spacing:1.5px; }
 }
-/* Teléfonos: 1 columna (así se ve hoy; borra este bloque si prefieres 2 columnas) */
+
 @media (max-width:520px){
   .amenities-grid{ grid-template-columns:1fr; }
 }
@@ -1282,7 +1375,7 @@ body.page-loaded .header-rule.line-finished{
   .amenity-circle{ width:92px; height:92px; }
 }
 
-/* 12b. Carrusel de fotos: 3 visibles (lateral | central | lateral) */
+
 .amenities-carousel{ position:relative; width:100%; margin-top:60px; }
 .amenities-carousel h3{
   margin:0 0 28px;
@@ -1309,9 +1402,7 @@ body.page-loaded .header-rule.line-finished{
 }
 .carousel-slide-side{ opacity:.78; }
 
-/* --- Sistema A: crossfade con dos <img> (.carousel-crossfade-*) ---
-   OJO: el sistema B (más abajo) pisa su opacidad. Deja solo el que
-   use tu JS (ver notas). */
+
 .carousel-slide > img:not(.carousel-crossfade-img){
   position:relative; z-index:1;
   display:block;
@@ -1334,19 +1425,6 @@ body.page-loaded .header-rule.line-finished{
 .carousel-slide > img:not(.carousel-crossfade-img).carousel-crossfade-hide{ opacity:0; }
 .carousel-slide:hover > img:not(.carousel-crossfade-img){ transform:scale(1.025); }
 
-/* --- Sistema B: .is-changing / .is-entering sobre el slide (gana al A) --- */
-.amenities-carousel .carousel-slide img{
-  opacity:1;
-  transition:opacity .65s ease, transform .65s ease;
-}
-.amenities-carousel .carousel-slide.is-changing img{ opacity:0; transform:scale(1.015); }
-.amenities-carousel .carousel-slide.is-entering img{ animation:amenitiesFadeIn .65s ease forwards; }
-@keyframes amenitiesFadeIn{
-  from{ opacity:0; transform:scale(1.015); }
-  to{ opacity:1; transform:scale(1); }
-}
-
-/* Flechas (solo el símbolo, sin círculo ni fondo) */
 .carousel-btn{
   position:absolute; top:50%; z-index:20;
   width:42px; height:60px;
@@ -1422,8 +1500,7 @@ body.page-loaded .header-rule.line-finished{
   .carousel-btn{ font-size:38px; }
 }
 
-/* 12c. Botón de contacto: dos piezas de vidrio verde (texto + flecha)
-   que se funden y se vuelven blancas al pasar el mouse por el grupo. */
+
 .amenities-contact{
   margin-top:35px;
   display:flex; align-items:center; justify-content:center;
@@ -1455,7 +1532,7 @@ body.page-loaded .header-rule.line-finished{
   font-size:21px; font-weight:400; line-height:1;
   transition:width .35s ease, background .35s ease, color .35s ease, border-color .35s ease, border-radius .35s ease, transform .35s ease, box-shadow .35s ease;
 }
-/* Brillo de vidrio en la parte alta de cada pieza */
+
 .contact-btn::before,
 .contact-arrow::before{
   content:"";
@@ -1466,7 +1543,7 @@ body.page-loaded .header-rule.line-finished{
   transition:background .35s ease;
 }
 
-/* Hover: las piezas se pegan y se vuelven blancas */
+
 .amenities-contact:hover{ gap:0; }
 .amenities-contact:hover .contact-btn,
 .amenities-contact:hover .contact-arrow{
